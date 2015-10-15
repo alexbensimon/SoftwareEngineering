@@ -5,6 +5,8 @@ namespace SoftwareEngineeringProject
 {
     class GameEngine
     {
+        public Player CurrentPlayer { get; set; }
+
         public GameEngine()
         {
             var humanPlayer = new Player();
@@ -14,6 +16,27 @@ namespace SoftwareEngineeringProject
             var playersList = new List<Player> {humanPlayer, aI1, aI2};
 
             AssignRandomSkillSets(playersList);
+
+            // Gaming loop.
+            while (true)
+            {
+                foreach (var player in playersList)
+                {
+                    CurrentPlayer = player;
+
+                    // If it is the human player's turn.
+                    if (player == humanPlayer)
+                    {
+                        
+                    }
+
+                    // Else it is an AI's turn.
+                    else
+                    {
+                        
+                    }
+                }
+            }
         }
 
         private static void AssignRandomSkillSets(List<Player> playersList)
@@ -35,6 +58,11 @@ namespace SoftwareEngineeringProject
 
                 skillSets.RemoveAt(skillSetIndex);
             }
+        }
+
+        public static void MovePlayer(string areaName)
+        {
+            
         }
     }
 }

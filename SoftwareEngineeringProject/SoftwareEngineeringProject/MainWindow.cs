@@ -15,6 +15,11 @@ namespace SoftwareEngineeringProject
             TopMost = true;
             //FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
+
+            listBox1.Items.Add("Room example 1");
+            listBox1.Items.Add("Room example 2");
+            listBox1.Items.Add("Room example 3");
+            listBox1.Items.Add("Room example 4");
         }
 
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
@@ -23,6 +28,11 @@ namespace SoftwareEngineeringProject
             {
                 Close();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
