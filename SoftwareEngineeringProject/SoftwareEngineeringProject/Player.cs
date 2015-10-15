@@ -10,7 +10,7 @@ namespace SoftwareEngineeringProject
     {
         private string name;
         // The position of the player is a room id.
-        private int _position;
+        public int Position { get; }
         private int _qualityPoints;
         public int LearningChips { get; set; }
         public int CraftChips { get; set; }

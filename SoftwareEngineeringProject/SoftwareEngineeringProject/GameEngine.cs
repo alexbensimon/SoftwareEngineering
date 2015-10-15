@@ -6,6 +6,7 @@ namespace SoftwareEngineeringProject
     class GameEngine
     {
         public Player CurrentPlayer { get; set; }
+        public static List<Player> PlayersList { get; set; }
 
         public GameEngine()
         {
@@ -13,14 +14,14 @@ namespace SoftwareEngineeringProject
             var aI1 = new Player();
             var aI2 = new Player();
 
-            var playersList = new List<Player> {humanPlayer, aI1, aI2};
+            PlayersList = new List<Player> {humanPlayer, aI1, aI2};
 
-            AssignRandomSkillSets(playersList);
+            AssignRandomSkillSets(PlayersList);
 
             // Gaming loop.
             while (true)
             {
-                foreach (var player in playersList)
+                foreach (var player in PlayersList)
                 {
                     CurrentPlayer = player;
 
