@@ -76,7 +76,7 @@ namespace SoftwareEngineeringProject
             var numberOfPlayer = GetNumberOfPlayerInTheRoom(roomId);
             yPos = yPos + numberOfPlayer * 20;
 
-            _labels[playerId].Location = new Point(xPos - pictureBox1.Width, yPos - pictureBox1.Height);
+            _labels[playerId].Location = new Point(xPos, yPos);
 
             // Update position.
             _gameEngine.PlayersList[playerId].Position = roomId;
