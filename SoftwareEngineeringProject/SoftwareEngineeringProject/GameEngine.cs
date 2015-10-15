@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SoftwareEngineeringProject
 {
     class GameEngine
     {
-        private Player _humanPlayer;
-
         public GameEngine()
         {
-            var playersList = new List<Player> {_humanPlayer, new Player(), new Player()};
+            var humanPlayer = new Player();
+            var aI1 = new Player();
+            var aI2 = new Player();
+
+            var playersList = new List<Player> {humanPlayer, aI1, aI2};
 
             AssignRandomSkillSets(playersList);
         }
 
-        private void AssignRandomSkillSets(List<Player> playersList)
+        private static void AssignRandomSkillSets(List<Player> playersList)
         {
             var skillSets = new List<List<int>> {
                 new List<int> {2, 2, 2},
@@ -27,9 +26,14 @@ namespace SoftwareEngineeringProject
 
             foreach (var player in playersList)
             {
-                player.LearningChips = 0;
-                player.CraftChips = 0;
-                player.IntegrityChips = 0;
+                var skillSetIndex = new Random().Next(skillSets.Count);
+                var currentSkillSet = skillSets[skillSetIndex];
+
+                player.LearningChips = currentSkillSet[0];
+                player.CraftChips = currentSkillSet[1];
+                player.IntegrityChips = currentSkillSet[2];
+
+                skillSets.RemoveAt(skillSetIndex);
             }
         }
     }
