@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -8,15 +7,28 @@ namespace SoftwareEngineeringProject
 {
     public partial class MainWindow : Form
     {
-        private readonly int[,] _firstCoordinates = new int[21,2] { {38, 97}, {465, 54}, {964,66}, {434, 288}, {27, 696}, {534, 572}, {1282, 512}, {71, 1726}, {570, 1766}, {1132, 1636}, {1463, 975}, {216, 893}, {191, 1167}, {187, 1347}, {740, 1068}, {893, 1160}, {594, 1406}, {816, 1347}, {1021, 891}, {1249, 887}, {1209, 1401} };
-        private readonly Label[] _labelTab = new Label[3];
+        private readonly GameEngine _gameEngine;
+
+        private readonly Label[] _labels = new Label[3];
 
         public MainWindow()
         {
             InitializeComponent();
-            _labelTab[0] = player1;
-            _labelTab[1] = player2;
-            _labelTab[2] = player3;
+
+            _gameEngine = new GameEngine();
+
+            _labels[0] = player1;
+            _labels[1] = player2;
+            _labels[2] = player3;
+
+            // Set label names.
+            for (var i = 0; i < _labels.Count(); i++)
+            {
+                _labels[i].Text = _gameEngine.PlayersList[i].Name;
+            }
+
+            // Start in ECS 308.
+            UpdateListboxDisplay(17);
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -24,11 +36,6 @@ namespace SoftwareEngineeringProject
             TopMost = true;
             //FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
-
-            listBox1.Items.Add("Room example 1");
-            listBox1.Items.Add("Room example 2");
-            listBox1.Items.Add("Room example 3");
-            listBox1.Items.Add("Room example 4");
         }
 
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
@@ -41,26 +48,66 @@ namespace SoftwareEngineeringProject
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (listBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Select a room!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var destinationName = listBox1.SelectedItem.ToString();
+                var destinationId = _gameEngine.RoomNames.IndexOf(destinationName);
+                GoToARoom(0, destinationId);
 
+                // Move each AI.
+                PlayComputer(_gameEngine.PlayersList[1]);
+                PlayComputer(_gameEngine.PlayersList[2]);
+
+                UpdateListboxDisplay(destinationId);
+            }            
         }
 
-        private void goToZone(int zoneId, int playerId)
+        private void GoToARoom(int playerId, int roomId)
         {
-            //Initialize positions
-            var xPos = _firstCoordinates[zoneId,0];
-            var yPos = _firstCoordinates[zoneId,1];
+            // Initialize positions.
+            var xPos = _gameEngine.RoomCoordinates[roomId, 0];
+            var yPos = _gameEngine.RoomCoordinates[roomId, 1];
 
-            //Check how many player are in the room
-            //And shift the player if there are already some players
-            var numberOfPlayer = getNumberOfPlayerInTheZone(zoneId);
-            xPos = xPos + numberOfPlayer * 55;
+            // Check how many player are in the room and shift the player if there are already some players.
+            var numberOfPlayer = GetNumberOfPlayerInTheRoom(roomId);
+            yPos = yPos + numberOfPlayer * 20;
 
-            _labelTab[playerId].Location = new Point(xPos, yPos); ;
+            _labels[playerId].Location = new Point(xPos - pictureBox1.Width, yPos - pictureBox1.Height);
+
+            // Update position.
+            _gameEngine.PlayersList[playerId].Position = roomId;
         }
 
-        private int getNumberOfPlayerInTheZone(int zoneId)
+        private int GetNumberOfPlayerInTheRoom(int roomId)
         {
-            return GameEngine.PlayersList.Count(player => player.Position == zoneId);
+            var count = 0;
+            foreach (var player in _gameEngine.PlayersList)
+            {
+                if (player.Position == roomId) count++;
+            }
+            return count;
+        }
+
+        private void PlayComputer(Player player)
+        {
+            var randomDestinationId = _gameEngine.RoomsAvailable[player.Position]
+                [new Random().Next(_gameEngine.RoomsAvailable[player.Position].Count)];
+            GoToARoom(_gameEngine.PlayersList.IndexOf(player), randomDestinationId);
+        }
+
+        private void UpdateListboxDisplay(int roomId)
+        {
+            listBox1.Items.Clear();
+
+            foreach (var roomAvailable in _gameEngine.RoomsAvailable[roomId])
+            {
+                var roomName = _gameEngine.RoomNames[roomAvailable];
+                listBox1.Items.Add(roomName);
+            }
         }
     }
 }

@@ -35,7 +35,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -55,7 +54,6 @@
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.player3);
             this.splitContainer1.Panel1.Controls.Add(this.player2);
             this.splitContainer1.Panel1.Controls.Add(this.player1);
@@ -74,7 +72,7 @@
             // 
             this.player3.AutoSize = true;
             this.player3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player3.Location = new System.Drawing.Point(928, 1347);
+            this.player3.Location = new System.Drawing.Point(816, 1398);
             this.player3.Name = "player3";
             this.player3.Size = new System.Drawing.Size(49, 15);
             this.player3.TabIndex = 3;
@@ -84,7 +82,7 @@
             // 
             this.player2.AutoSize = true;
             this.player2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player2.Location = new System.Drawing.Point(871, 1347);
+            this.player2.Location = new System.Drawing.Point(816, 1371);
             this.player2.Name = "player2";
             this.player2.Size = new System.Drawing.Size(49, 15);
             this.player2.TabIndex = 2;
@@ -130,16 +128,6 @@
             this.listBox1.Size = new System.Drawing.Size(127, 43);
             this.listBox1.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1209, 1401);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 15);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Player1";
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,6 +158,5 @@
         private System.Windows.Forms.Label player3;
         private System.Windows.Forms.Label player2;
         private System.Windows.Forms.Label player1;
-        private System.Windows.Forms.Label label1;
     }
 }
