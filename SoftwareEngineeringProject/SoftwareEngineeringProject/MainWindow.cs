@@ -25,6 +25,7 @@ namespace SoftwareEngineeringProject
             for (var i = 0; i < _labels.Count(); i++)
             {
                 _labels[i].Text = _gameEngine.PlayersList[i].Name;
+                _labels[i].Parent = pictureBox1;
             }
 
             // Start in ECS 308.
@@ -33,7 +34,7 @@ namespace SoftwareEngineeringProject
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            TopMost = true;
+            //TopMost = true;
             //FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
         }
