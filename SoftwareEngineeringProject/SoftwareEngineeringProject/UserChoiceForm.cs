@@ -23,5 +23,10 @@ namespace SoftwareEngineeringProject
         {
             return cmbBox.SelectedText;
         }
+
+        public int GetCmbBoxSelectedId()
+        {
+            return cmbBox.SelectedIndex;
+        }
     }
 }

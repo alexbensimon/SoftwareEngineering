@@ -35,7 +35,7 @@ namespace SoftwareEngineeringProject
         };
 
         public static List<Card> Deck = new List<Card>();
-
+        public static List<Card> DiscardedDeck = new List<Card>(); 
 
         public GameEngine()
         {
@@ -80,6 +80,7 @@ namespace SoftwareEngineeringProject
 
         private static void InitiateDeck()
         {
+            //Add all class derived from the abstract class Card to the Deck
             foreach (Type type in
             AppDomain.CurrentDomain.GetAssemblies()
                        .SelectMany(assembly => assembly.GetTypes())
@@ -91,6 +92,7 @@ namespace SoftwareEngineeringProject
 
         private static void AssignRandomHands(List<Player> playersList)
         {
+            //Initiate hands of the players with the cards on top of the deck (it has been shuffled before)
             foreach (var player in playersList)
             {
                 for (int i = 0; i < 5; i++)
@@ -108,6 +110,7 @@ namespace SoftwareEngineeringProject
             var tmpDeckList = tmpDeck.ToList();
             Deck.Clear();
             Random rnd = new Random();
+
             foreach (var card in tmpDeck)
             {
                 int index= rnd.Next(tmpDeckList.Count);
