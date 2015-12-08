@@ -15,7 +15,10 @@ namespace SoftwareEngineeringProject
         public UserChoiceForm(string labeltext, string[] choices)
         {
             InitializeComponent();
-            cmbBox.Items.Add(choices);
+            foreach (var choice in choices)
+            {
+                cmbBox.Items.Add(choice);
+            }
             lblMain.Text = labeltext;
         }
 

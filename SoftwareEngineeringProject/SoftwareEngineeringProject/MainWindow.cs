@@ -110,5 +110,10 @@ namespace SoftwareEngineeringProject
                 listBox1.Items.Add(roomName);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _gameEngine.PlayersList[0].DiscardCard();
+        }
     }
 }
