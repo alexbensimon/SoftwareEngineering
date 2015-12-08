@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace SoftwareEngineeringProject
 {
@@ -32,6 +34,9 @@ namespace SoftwareEngineeringProject
             {1000, 1160}, {594, 1406}, {816, 1347}, {1021, 891}, {1249, 887}, {1209, 1401}
         };
 
+        public static List<Card> Deck = new List<Card>();
+
+
         public GameEngine()
         {
             var humanPlayer = new Player { Name = "Human player" };
@@ -47,6 +52,9 @@ namespace SoftwareEngineeringProject
             }
 
             AssignRandomSkillSets(PlayersList);
+            InitiateDeck();
+            ShuffleDeck();
+            AssignRandomHands(PlayersList);
         }
 
         private static void AssignRandomSkillSets(List<Player> playersList)
@@ -67,6 +75,44 @@ namespace SoftwareEngineeringProject
                 player.IntegrityChips = currentSkillSet[2];
 
                 skillSets.RemoveAt(skillSetIndex);
+            }
+        }
+
+        private static void InitiateDeck()
+        {
+            foreach (Type type in
+            AppDomain.CurrentDomain.GetAssemblies()
+                       .SelectMany(assembly => assembly.GetTypes())
+                       .Where(type => type.IsSubclassOf(typeof(Card))))
+            {
+                Deck.Add((Card)Activator.CreateInstance(type));
+            }
+        }
+
+        private static void AssignRandomHands(List<Player> playersList)
+        {
+            foreach (var player in playersList)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    player.Hand.Add(Deck.First());
+                    Deck.RemoveAt(0);
+                }
+            }
+        }
+
+        private static void ShuffleDeck()
+        {
+            var tmpDeck = new Card[Deck.Count];
+            Deck.CopyTo(tmpDeck);
+            var tmpDeckList = tmpDeck.ToList();
+            Deck.Clear();
+            Random rnd = new Random();
+            foreach (var card in tmpDeck)
+            {
+                int index= rnd.Next(tmpDeckList.Count);
+                Deck.Add(tmpDeckList.ElementAt(index));
+                tmpDeckList.RemoveAt(index);
             }
         }
     }
