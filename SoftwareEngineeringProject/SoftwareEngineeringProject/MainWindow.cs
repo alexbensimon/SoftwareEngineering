@@ -34,8 +34,6 @@ namespace SoftwareEngineeringProject
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            //TopMost = true;
-            //FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
         }
 
@@ -64,7 +62,7 @@ namespace SoftwareEngineeringProject
                 PlayComputer(_gameEngine.PlayersList[2]);
 
                 UpdateListboxDisplay(destinationId);
-            }            
+            }
         }
 
         private void GoToARoom(int playerId, int roomId)
@@ -75,7 +73,7 @@ namespace SoftwareEngineeringProject
 
             // Check how many player are in the room and shift the player if there are already some players.
             var numberOfPlayer = GetNumberOfPlayerInTheRoom(roomId);
-            yPos = yPos + numberOfPlayer * 20;
+            yPos = yPos + numberOfPlayer * 40;
 
             _labels[playerId].Location = new Point(xPos, yPos);
 
@@ -93,6 +91,7 @@ namespace SoftwareEngineeringProject
             return count;
         }
 
+        // TODO: Pourquoi les 2 IA vont au meme endroit ?
         private void PlayComputer(Player player)
         {
             var randomDestinationId = _gameEngine.RoomsAvailable[player.Position]

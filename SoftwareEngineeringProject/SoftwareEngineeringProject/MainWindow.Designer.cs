@@ -73,30 +73,36 @@
             // player3
             // 
             this.player3.AutoSize = true;
-            this.player3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player3.Location = new System.Drawing.Point(816, 1403);
+            this.player3.BackColor = System.Drawing.Color.Transparent;
+            this.player3.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player3.ForeColor = System.Drawing.Color.Red;
+            this.player3.Location = new System.Drawing.Point(816, 1434);
             this.player3.Name = "player3";
-            this.player3.Size = new System.Drawing.Size(49, 15);
+            this.player3.Size = new System.Drawing.Size(100, 33);
             this.player3.TabIndex = 3;
             this.player3.Text = "Player3";
             // 
             // player2
             // 
             this.player2.AutoSize = true;
-            this.player2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player2.Location = new System.Drawing.Point(817, 1371);
+            this.player2.BackColor = System.Drawing.Color.Transparent;
+            this.player2.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player2.ForeColor = System.Drawing.Color.Red;
+            this.player2.Location = new System.Drawing.Point(816, 1390);
             this.player2.Name = "player2";
-            this.player2.Size = new System.Drawing.Size(49, 15);
+            this.player2.Size = new System.Drawing.Size(100, 33);
             this.player2.TabIndex = 2;
             this.player2.Text = "Player2";
             // 
             // player1
             // 
             this.player1.AutoSize = true;
-            this.player1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player1.BackColor = System.Drawing.Color.Transparent;
+            this.player1.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player1.ForeColor = System.Drawing.Color.Red;
             this.player1.Location = new System.Drawing.Point(816, 1344);
             this.player1.Name = "player1";
-            this.player1.Size = new System.Drawing.Size(49, 15);
+            this.player1.Size = new System.Drawing.Size(100, 33);
             this.player1.TabIndex = 1;
             this.player1.Text = "Player1";
             // 
