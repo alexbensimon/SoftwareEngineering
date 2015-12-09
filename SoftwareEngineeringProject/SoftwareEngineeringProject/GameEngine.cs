@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace SoftwareEngineeringProject
 {
@@ -35,7 +34,7 @@ namespace SoftwareEngineeringProject
         };
 
         public static List<Card> Deck = new List<Card>();
-        public static List<Card> DiscardedDeck = new List<Card>(); 
+        public static List<Card> DiscardedDeck = new List<Card>();
 
         public GameEngine()
         {
@@ -113,7 +112,7 @@ namespace SoftwareEngineeringProject
 
             foreach (var card in tmpDeck)
             {
-                int index= rnd.Next(tmpDeckList.Count);
+                int index = rnd.Next(tmpDeckList.Count);
                 Deck.Add(tmpDeckList.ElementAt(index));
                 tmpDeckList.RemoveAt(index);
             }

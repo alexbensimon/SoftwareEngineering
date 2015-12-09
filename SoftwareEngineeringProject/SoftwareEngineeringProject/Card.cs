@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows.Forms;
 
 namespace SoftwareEngineeringProject
@@ -188,7 +184,7 @@ namespace SoftwareEngineeringProject
     {
         public override void Play(Player player)
         {
-            //todo checker si c'est bien ca la liste
+            // TODO: checker si c'est bien ca la liste
             if (new[] { 0, 1, 2, 3, 4, 5, 7, 8, 9, 10 }.Contains(player.Position))
             {
                 player.CraftChips++;
