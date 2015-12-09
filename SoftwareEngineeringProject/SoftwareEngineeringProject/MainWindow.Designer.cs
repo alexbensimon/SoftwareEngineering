@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.player3 = new System.Windows.Forms.Label();
-            this.player2 = new System.Windows.Forms.Label();
-            this.player1 = new System.Windows.Forms.Label();
+            this.labelPlayer3 = new System.Windows.Forms.Label();
+            this.labelPlayer2 = new System.Windows.Forms.Label();
+            this.labelPlayer1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonPlayCard = new System.Windows.Forms.Button();
+            this.buttonDrawCard = new System.Windows.Forms.Button();
+            this.buttonTest = new System.Windows.Forms.Button();
+            this.buttonMove = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -55,56 +57,58 @@
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer1.Panel1.Controls.Add(this.player3);
-            this.splitContainer1.Panel1.Controls.Add(this.player2);
-            this.splitContainer1.Panel1.Controls.Add(this.player1);
+            this.splitContainer1.Panel1.Controls.Add(this.labelPlayer3);
+            this.splitContainer1.Panel1.Controls.Add(this.labelPlayer2);
+            this.splitContainer1.Panel1.Controls.Add(this.labelPlayer1);
             this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer1.Panel2.Controls.Add(this.button2);
-            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonPlayCard);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonDrawCard);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonTest);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonMove);
             this.splitContainer1.Panel2.Controls.Add(this.listBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(873, 300);
-            this.splitContainer1.SplitterDistance = 200;
+            this.splitContainer1.Size = new System.Drawing.Size(870, 387);
+            this.splitContainer1.SplitterDistance = 258;
             this.splitContainer1.TabIndex = 0;
             // 
-            // player3
+            // labelPlayer3
             // 
-            this.player3.AutoSize = true;
-            this.player3.BackColor = System.Drawing.Color.Transparent;
-            this.player3.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player3.ForeColor = System.Drawing.Color.Red;
-            this.player3.Location = new System.Drawing.Point(816, 1434);
-            this.player3.Name = "player3";
-            this.player3.Size = new System.Drawing.Size(100, 33);
-            this.player3.TabIndex = 3;
-            this.player3.Text = "Player3";
+            this.labelPlayer3.AutoSize = true;
+            this.labelPlayer3.BackColor = System.Drawing.Color.Transparent;
+            this.labelPlayer3.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPlayer3.ForeColor = System.Drawing.Color.Red;
+            this.labelPlayer3.Location = new System.Drawing.Point(816, 1434);
+            this.labelPlayer3.Name = "labelPlayer3";
+            this.labelPlayer3.Size = new System.Drawing.Size(100, 33);
+            this.labelPlayer3.TabIndex = 3;
+            this.labelPlayer3.Text = "Player3";
             // 
-            // player2
+            // labelPlayer2
             // 
-            this.player2.AutoSize = true;
-            this.player2.BackColor = System.Drawing.Color.Transparent;
-            this.player2.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player2.ForeColor = System.Drawing.Color.Red;
-            this.player2.Location = new System.Drawing.Point(816, 1390);
-            this.player2.Name = "player2";
-            this.player2.Size = new System.Drawing.Size(100, 33);
-            this.player2.TabIndex = 2;
-            this.player2.Text = "Player2";
+            this.labelPlayer2.AutoSize = true;
+            this.labelPlayer2.BackColor = System.Drawing.Color.Transparent;
+            this.labelPlayer2.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPlayer2.ForeColor = System.Drawing.Color.Red;
+            this.labelPlayer2.Location = new System.Drawing.Point(816, 1390);
+            this.labelPlayer2.Name = "labelPlayer2";
+            this.labelPlayer2.Size = new System.Drawing.Size(100, 33);
+            this.labelPlayer2.TabIndex = 2;
+            this.labelPlayer2.Text = "Player2";
             // 
-            // player1
+            // labelPlayer1
             // 
-            this.player1.AutoSize = true;
-            this.player1.BackColor = System.Drawing.Color.Transparent;
-            this.player1.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.player1.ForeColor = System.Drawing.Color.Red;
-            this.player1.Location = new System.Drawing.Point(816, 1344);
-            this.player1.Name = "player1";
-            this.player1.Size = new System.Drawing.Size(100, 33);
-            this.player1.TabIndex = 1;
-            this.player1.Text = "Player1";
+            this.labelPlayer1.AutoSize = true;
+            this.labelPlayer1.BackColor = System.Drawing.Color.Transparent;
+            this.labelPlayer1.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPlayer1.ForeColor = System.Drawing.Color.Red;
+            this.labelPlayer1.Location = new System.Drawing.Point(816, 1344);
+            this.labelPlayer1.Name = "labelPlayer1";
+            this.labelPlayer1.Size = new System.Drawing.Size(100, 33);
+            this.labelPlayer1.TabIndex = 1;
+            this.labelPlayer1.Text = "Player1";
             // 
             // pictureBox1
             // 
@@ -116,41 +120,61 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button2
+            // buttonPlayCard
             // 
-            this.button2.Location = new System.Drawing.Point(99, 31);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "test";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonPlayCard.Location = new System.Drawing.Point(3, 61);
+            this.buttonPlayCard.Name = "buttonPlayCard";
+            this.buttonPlayCard.Size = new System.Drawing.Size(75, 23);
+            this.buttonPlayCard.TabIndex = 4;
+            this.buttonPlayCard.Text = "Play Card";
+            this.buttonPlayCard.UseVisualStyleBackColor = true;
+            this.buttonPlayCard.Click += new System.EventHandler(this.buttonPlayCard_Click);
             // 
-            // button1
+            // buttonDrawCard
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Location = new System.Drawing.Point(416, 61);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Move";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonDrawCard.Location = new System.Drawing.Point(3, 3);
+            this.buttonDrawCard.Name = "buttonDrawCard";
+            this.buttonDrawCard.Size = new System.Drawing.Size(75, 23);
+            this.buttonDrawCard.TabIndex = 3;
+            this.buttonDrawCard.Text = "Draw Card";
+            this.buttonDrawCard.UseVisualStyleBackColor = true;
+            this.buttonDrawCard.Click += new System.EventHandler(this.buttonDrawCard_Click);
+            // 
+            // buttonTest
+            // 
+            this.buttonTest.Location = new System.Drawing.Point(162, 3);
+            this.buttonTest.Name = "buttonTest";
+            this.buttonTest.Size = new System.Drawing.Size(75, 23);
+            this.buttonTest.TabIndex = 2;
+            this.buttonTest.Text = "test";
+            this.buttonTest.UseVisualStyleBackColor = true;
+            this.buttonTest.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // buttonMove
+            // 
+            this.buttonMove.Location = new System.Drawing.Point(3, 32);
+            this.buttonMove.Name = "buttonMove";
+            this.buttonMove.Size = new System.Drawing.Size(75, 23);
+            this.buttonMove.TabIndex = 1;
+            this.buttonMove.Text = "Move";
+            this.buttonMove.UseVisualStyleBackColor = true;
+            this.buttonMove.Click += new System.EventHandler(this.buttonMove_Click);
             // 
             // listBox1
             // 
-            this.listBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(387, 12);
+            this.listBox1.Location = new System.Drawing.Point(3, 90);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(127, 43);
+            this.listBox1.Size = new System.Drawing.Size(129, 30);
             this.listBox1.TabIndex = 0;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 300);
+            this.ClientSize = new System.Drawing.Size(870, 387);
             this.Controls.Add(this.splitContainer1);
             this.KeyPreview = true;
             this.Name = "MainWindow";
@@ -171,11 +195,13 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonMove;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label player3;
-        private System.Windows.Forms.Label player2;
-        private System.Windows.Forms.Label player1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label labelPlayer3;
+        private System.Windows.Forms.Label labelPlayer2;
+        private System.Windows.Forms.Label labelPlayer1;
+        private System.Windows.Forms.Button buttonTest;
+        private System.Windows.Forms.Button buttonPlayCard;
+        private System.Windows.Forms.Button buttonDrawCard;
     }
 }

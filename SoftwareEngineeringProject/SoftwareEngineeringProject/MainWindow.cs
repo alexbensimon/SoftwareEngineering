@@ -8,8 +8,8 @@ namespace SoftwareEngineeringProject
     public partial class MainWindow : Form
     {
         private readonly GameEngine _gameEngine;
-
         private readonly Label[] _labels = new Label[3];
+        private int _numberOfMoves = 0;
 
         public MainWindow()
         {
@@ -17,9 +17,9 @@ namespace SoftwareEngineeringProject
 
             _gameEngine = new GameEngine();
 
-            _labels[0] = player1;
-            _labels[1] = player2;
-            _labels[2] = player3;
+            _labels[0] = labelPlayer1;
+            _labels[1] = labelPlayer2;
+            _labels[2] = labelPlayer3;
 
             // Set label names.
             for (var i = 0; i < _labels.Count(); i++)
@@ -30,6 +30,10 @@ namespace SoftwareEngineeringProject
 
             // Start in ECS 308.
             UpdateListboxDisplay(17);
+
+            buttonDrawCard.Enabled = true;
+            buttonMove.Enabled = false;
+            buttonPlayCard.Enabled = false;
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -44,27 +48,7 @@ namespace SoftwareEngineeringProject
                 Close();
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (listBox1.SelectedItem == null)
-            {
-                MessageBox.Show("Select a room!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                var destinationName = listBox1.SelectedItem.ToString();
-                var destinationId = _gameEngine.RoomNames.IndexOf(destinationName);
-                GoToARoom(0, destinationId);
-
-                // Move each AI.
-                PlayComputer(_gameEngine.PlayersList[1]);
-                PlayComputer(_gameEngine.PlayersList[2]);
-
-                UpdateListboxDisplay(destinationId);
-            }
-        }
-
+        
         private void GoToARoom(int playerId, int roomId)
         {
             // Initialize positions.
@@ -113,6 +97,40 @@ namespace SoftwareEngineeringProject
         private void button2_Click(object sender, EventArgs e)
         {
             _gameEngine.PlayersList[0].DiscardCard();
+        }
+
+        private void buttonDrawCard_Click(object sender, EventArgs e)
+        {
+            _gameEngine.PlayersList[0].DrawCard();
+            // TODO: Reset card display to the card just drawn
+            buttonDrawCard.Enabled = false;
+            buttonMove.Enabled = true;
+            buttonPlayCard.Enabled = true;
+        }
+
+        private void buttonMove_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Select a room!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var destinationName = listBox1.SelectedItem.ToString();
+                var destinationId = _gameEngine.RoomNames.IndexOf(destinationName);
+                GoToARoom(0, destinationId);
+
+                UpdateListboxDisplay(destinationId);
+            }
+            _numberOfMoves++;
+            if (_numberOfMoves == 3) buttonMove.Enabled = false;
+        }
+
+        private void buttonPlayCard_Click(object sender, EventArgs e)
+        {
+            // Each AI plays.
+            PlayComputer(_gameEngine.PlayersList[1]);
+            PlayComputer(_gameEngine.PlayersList[2]);
         }
     }
 }
