@@ -128,9 +128,17 @@ namespace SoftwareEngineeringProject
 
         private void buttonPlayCard_Click(object sender, EventArgs e)
         {
+            // Play the card.
+
+            buttonPlayCard.Enabled = false;
+            if (buttonMove.Enabled) buttonMove.Enabled = false; 
+
             // Each AI plays.
             PlayComputer(_gameEngine.PlayersList[1]);
             PlayComputer(_gameEngine.PlayersList[2]);
+
+            // New turn.
+            buttonDrawCard.Enabled = true;
         }
     }
 }
