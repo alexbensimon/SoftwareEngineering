@@ -133,6 +133,7 @@ namespace SoftwareEngineeringProject
         private void buttonPlayCard_Click(object sender, EventArgs e)
         {
             // Play the card.
+            _gameEngine.PlayersList[0].PlayCard(_indexOfCardDisplayed);
 
             buttonPlayCard.Enabled = false;
             if (buttonMove.Enabled) buttonMove.Enabled = false;

@@ -82,5 +82,11 @@ namespace SoftwareEngineeringProject
                 }
             }
         }
+
+        public void PlayCard(int indexCardInHand)
+        {
+            // If failure.
+            if (!Hand.ElementAt(indexCardInHand).Play(this)) QualityPoints -= 2;
+        }
     }
 }

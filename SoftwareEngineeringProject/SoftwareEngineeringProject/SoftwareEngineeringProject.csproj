@@ -132,6 +132,18 @@
     <Content Include="Pictures\Cards\Freshman\SoccerClass.png" />
     <Content Include="Pictures\Cards\Freshman\SoccerGoalie.png" />
     <Content Include="Pictures\Cards\Freshman\StudentParking.png" />
+    <Content Include="Pictures\Cards\Sophomore\CarPool.png" />
+    <Content Include="Pictures\Cards\Sophomore\Cecs201.png" />
+    <Content Include="Pictures\Cards\Sophomore\Cecs228.png" />
+    <Content Include="Pictures\Cards\Sophomore\Cecs274.png" />
+    <Content Include="Pictures\Cards\Sophomore\Cecs277.png" />
+    <Content Include="Pictures\Cards\Sophomore\Cecs282.png" />
+    <Content Include="Pictures\Cards\Sophomore\Cecs285.png" />
+    <Content Include="Pictures\Cards\Sophomore\Engl317.png" />
+    <Content Include="Pictures\Cards\Sophomore\HaveASwim.png" />
+    <Content Include="Pictures\Cards\Sophomore\LbsuVsUci.png" />
+    <Content Include="Pictures\Cards\Sophomore\Phil270.png" />
+    <Content Include="Pictures\Cards\Sophomore\Phys152.png" />
     <Content Include="Pictures\CSULBMap3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
