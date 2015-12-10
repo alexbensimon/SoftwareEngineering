@@ -343,7 +343,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Newlaptop : Card
+    internal class NewLaptop : Card
     {
         public override void Play(Player player)
         {
@@ -359,7 +359,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class MeatDean : Card
+    internal class MeetDean : Card
     {
         public override void Play(Player player)
         {
@@ -406,7 +406,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class ProfesorEnglert : Card
+    internal class ProfessorEnglert : Card
     {
         public override void Play(Player player)
         {

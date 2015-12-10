@@ -25,7 +25,7 @@ namespace SoftwareEngineeringProject
             for (var i = 0; i < _labels.Count(); i++)
             {
                 _labels[i].Text = _gameEngine.PlayersList[i].Name;
-                _labels[i].Parent = pictureBox1;
+                _labels[i].Parent = pictureBoxMap;
             }
 
             // Start in ECS 308.
@@ -34,6 +34,9 @@ namespace SoftwareEngineeringProject
             buttonDrawCard.Enabled = true;
             buttonMove.Enabled = false;
             buttonPlayCard.Enabled = false;
+
+            var cardName = _gameEngine.PlayersList[0].Hand.First().GetType().Name;
+            pictureBoxCard.Image = Image.FromFile("Pictures/Cards/Freshman/" + cardName + ".png");
         }
 
         private void MainWindow_Load(object sender, EventArgs e)

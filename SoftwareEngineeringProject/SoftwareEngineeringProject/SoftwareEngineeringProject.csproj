@@ -93,6 +93,45 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pictures\CardsPictures\FreshmanCards\BigGame.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Bratwurst.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Buddy.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Cecs100.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Cecs105.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Chem111.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\ElectiveClass.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\EnjoyingNature.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\FallPond.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Finding.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Goodbye.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Hoffman.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Kin253.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Late.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\LearningLinux.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\LoudBuzzing.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Major.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\MakeDeansList.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\MakeFriend.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Math122.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Math123.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\MeetDean.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Mind.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Murgolo.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Netbeans.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\NewLaptop.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\OralCommunication.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Outpost.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Parking.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Peace.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\Physics.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\PressRightFloor.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\ProfessorEnglert.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\ProgramCrashes.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\ResearchCompilers.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\ScoreGoal.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\SoccerClass.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\SoccerGoalie.png" />
+    <Content Include="Pictures\CardsPictures\FreshmanCards\StudentParking.png" />
     <Content Include="Pictures\CSULBMap3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

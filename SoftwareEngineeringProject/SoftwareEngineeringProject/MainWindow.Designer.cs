@@ -32,17 +32,19 @@
             this.labelPlayer3 = new System.Windows.Forms.Label();
             this.labelPlayer2 = new System.Windows.Forms.Label();
             this.labelPlayer1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMap = new System.Windows.Forms.PictureBox();
             this.buttonPlayCard = new System.Windows.Forms.Button();
             this.buttonDrawCard = new System.Windows.Forms.Button();
             this.buttonTest = new System.Windows.Forms.Button();
             this.buttonMove = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.pictureBoxCard = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCard)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -60,11 +62,12 @@
             this.splitContainer1.Panel1.Controls.Add(this.labelPlayer3);
             this.splitContainer1.Panel1.Controls.Add(this.labelPlayer2);
             this.splitContainer1.Panel1.Controls.Add(this.labelPlayer1);
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.pictureBoxMap);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer1.Panel2.Controls.Add(this.pictureBoxCard);
             this.splitContainer1.Panel2.Controls.Add(this.buttonPlayCard);
             this.splitContainer1.Panel2.Controls.Add(this.buttonDrawCard);
             this.splitContainer1.Panel2.Controls.Add(this.buttonTest);
@@ -110,15 +113,15 @@
             this.labelPlayer1.TabIndex = 1;
             this.labelPlayer1.Text = "Player1";
             // 
-            // pictureBox1
+            // pictureBoxMap
             // 
-            this.pictureBox1.Image = global::SoftwareEngineeringProject.Properties.Resources.CSULBMap3;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1670, 2000);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxMap.Image = global::SoftwareEngineeringProject.Properties.Resources.CSULBMap3;
+            this.pictureBoxMap.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxMap.Name = "pictureBoxMap";
+            this.pictureBoxMap.Size = new System.Drawing.Size(1670, 2000);
+            this.pictureBoxMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxMap.TabIndex = 0;
+            this.pictureBoxMap.TabStop = false;
             // 
             // buttonPlayCard
             // 
@@ -142,7 +145,7 @@
             // 
             // buttonTest
             // 
-            this.buttonTest.Location = new System.Drawing.Point(162, 3);
+            this.buttonTest.Location = new System.Drawing.Point(422, 32);
             this.buttonTest.Name = "buttonTest";
             this.buttonTest.Size = new System.Drawing.Size(75, 23);
             this.buttonTest.TabIndex = 2;
@@ -170,6 +173,16 @@
             this.listBox1.Size = new System.Drawing.Size(129, 30);
             this.listBox1.TabIndex = 0;
             // 
+            // pictureBoxCard
+            // 
+            this.pictureBoxCard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pictureBoxCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxCard.Location = new System.Drawing.Point(160, 3);
+            this.pictureBoxCard.Name = "pictureBoxCard";
+            this.pictureBoxCard.Size = new System.Drawing.Size(109, 119);
+            this.pictureBoxCard.TabIndex = 5;
+            this.pictureBoxCard.TabStop = false;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,7 +199,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCard)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -194,7 +208,7 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxMap;
         private System.Windows.Forms.Button buttonMove;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label labelPlayer3;
@@ -203,5 +217,6 @@
         private System.Windows.Forms.Button buttonTest;
         private System.Windows.Forms.Button buttonPlayCard;
         private System.Windows.Forms.Button buttonDrawCard;
+        private System.Windows.Forms.PictureBox pictureBoxCard;
     }
 }
