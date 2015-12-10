@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace SoftwareEngineeringProject
 {
-    class GameEngine
+    public class GameEngine
     {
         public List<Player> PlayersList { get; set; }
 
@@ -33,14 +33,14 @@ namespace SoftwareEngineeringProject
             {1000, 1160}, {594, 1406}, {816, 1347}, {1021, 891}, {1249, 887}, {1209, 1401}
         };
 
-        public static List<Card> Deck = new List<Card>();
-        public static List<Card> DiscardedDeck = new List<Card>();
+        public List<Card> Deck = new List<Card>();
+        public List<Card> DiscardedDeck = new List<Card>();
 
         public GameEngine()
         {
-            var humanPlayer = new Player { Name = "Human player" };
-            var aI1 = new Player { Name = "AI 1" };
-            var aI2 = new Player { Name = "AI 2" };
+            var humanPlayer = new Player("Human player", this);
+            var aI1 = new Player("AI 1", this);
+            var aI2 = new Player("AI 2", this);
 
             PlayersList = new List<Player> { humanPlayer, aI1, aI2 };
 
@@ -77,7 +77,7 @@ namespace SoftwareEngineeringProject
             }
         }
 
-        private static void InitiateDeck()
+        private void InitiateDeck()
         {
             //Add all class derived from the abstract class Card to the Deck
             foreach (Type type in
@@ -89,7 +89,7 @@ namespace SoftwareEngineeringProject
             }
         }
 
-        private static void AssignRandomHands(List<Player> playersList)
+        private void AssignRandomHands(List<Player> playersList)
         {
             //Initiate hands of the players with the cards on top of the deck (it has been shuffled before)
             foreach (var player in playersList)
@@ -102,7 +102,7 @@ namespace SoftwareEngineeringProject
             }
         }
 
-        private static void ShuffleDeck()
+        private void ShuffleDeck()
         {
             var tmpDeck = new Card[Deck.Count];
             Deck.CopyTo(tmpDeck);

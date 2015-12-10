@@ -7,17 +7,25 @@ namespace SoftwareEngineeringProject
 {
     public class Player
     {
-        public string Name { get; set; }
+        public string Name { get; }
 
         // The position of the player is a room id.
         public int Position { get; set; }
 
-        public int QualityPoints { get; set; }
         public int LearningChips { get; set; }
         public int CraftChips { get; set; }
         public int IntegrityChips { get; set; }
+        public int QualityPoints { get; set; }
 
         public List<Card> Hand = new List<Card>();
+
+        private readonly GameEngine _gameEngine;
+
+        public Player(string name, GameEngine gameEngine)
+        {
+            Name = name;
+            _gameEngine = gameEngine;
+        }
 
         public void DiscardCard()
         {
@@ -39,7 +47,7 @@ namespace SoftwareEngineeringProject
 
             var cardToRemove = Hand.ElementAt(form.GetCmbBoxSelectedId());
             Hand.Remove(cardToRemove);
-            GameEngine.DiscardedDeck.Add(cardToRemove);
+            _gameEngine.DiscardedDeck.Add(cardToRemove);
         }
 
         public void LoseCard()
@@ -47,13 +55,13 @@ namespace SoftwareEngineeringProject
             var rnd = new Random();
             var card = Hand.ElementAt(rnd.Next());
             Hand.Remove(card);
-            GameEngine.DiscardedDeck.Add(card);
+            _gameEngine.DiscardedDeck.Add(card);
         }
 
         public void DrawCard()
         {
-            Hand.Add(GameEngine.Deck.First());
-            GameEngine.Deck.Remove(GameEngine.Deck.First());
+            Hand.Add(_gameEngine.Deck.First());
+            _gameEngine.Deck.Remove(_gameEngine.Deck.First());
         }
 
         public void MovePlayer(int roomId)

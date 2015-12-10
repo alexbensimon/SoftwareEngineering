@@ -32,6 +32,8 @@ namespace SoftwareEngineeringProject
             // Start in ECS 308.
             UpdateListboxDisplay(17);
 
+            UpdateInformationPanel();
+
             buttonDrawCard.Enabled = true;
             buttonMove.Enabled = false;
             buttonPlayCard.Enabled = false;
@@ -143,6 +145,7 @@ namespace SoftwareEngineeringProject
             PlayComputer(_gameEngine.PlayersList[2]);
 
             // New turn.
+            UpdateInformationPanel();
             buttonDrawCard.Enabled = true;
         }
 
@@ -150,10 +153,10 @@ namespace SoftwareEngineeringProject
         {
             // Display the card played in the Current Play panel.
             var cardPlayed = _gameEngine.PlayersList[playerIndex].Hand.ElementAt(cardIndexInHand);
-            textBoxCurrentPlay.Text += "\n" + _gameEngine.PlayersList[playerIndex].Name + " played " +
+            textBoxCurrentPlay.Text += _gameEngine.PlayersList[playerIndex].Name + " played " +
                                        cardPlayed.Name;
-            if (success) textBoxCurrentPlay.Text += " for " + cardPlayed.Reward;
-            else textBoxCurrentPlay.Text += " but failed";
+            if (success) textBoxCurrentPlay.Text += " for " + cardPlayed.Reward + "\r\n";
+            else textBoxCurrentPlay.Text += " but failed" + "\r\n";
         }
 
         private void pictureBoxCard_Click(object sender, EventArgs e)
@@ -168,6 +171,26 @@ namespace SoftwareEngineeringProject
         {
             var cardName = _gameEngine.PlayersList[0].Hand.ElementAt(_indexOfCardDisplayed).GetType().Name;
             pictureBoxCard.Image = Image.FromFile(@"..\..\Pictures\Cards\Freshman\" + cardName + ".png");
+        }
+
+        private void UpdateInformationPanel()
+        {
+            var playersList = _gameEngine.PlayersList;
+            var player1 = playersList[0];
+            var player2 = playersList[1];
+            var player3 = playersList[2];
+            textBoxInformationPanel.Text =
+                "\t\tLearning\t\tCraft\t\tIntegrity\t\tQualityPoints\r\n" +
+                player1.Name + "\t" + player1.LearningChips + "\t\t" + player1.CraftChips + "\t\t" + player1.IntegrityChips +
+                "\t\t" + player1.QualityPoints + "\r\n" +
+                player2.Name + "\t\t" + player2.LearningChips + "\t\t" + player2.CraftChips + "\t\t" + player2.IntegrityChips +
+                "\t\t" + player2.QualityPoints + "\r\n" +
+                player3.Name + "\t\t" + player3.LearningChips + "\t\t" + player3.CraftChips + "\t\t" + player3.IntegrityChips +
+                "\t\t" + player3.QualityPoints + "\r\n" +
+                "\r\n\r\n" +
+                "Cards in deck: " + _gameEngine.Deck.Count + "\tDiscards out of play: " +
+                _gameEngine.DiscardedDeck.Count + "\r\n\r\n" +
+                "You are " + player1.Name + " and you are in " + _gameEngine.RoomNames[player1.Position];
         }
     }
 }

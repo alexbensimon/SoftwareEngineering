@@ -40,6 +40,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.textBoxCurrentPlay = new System.Windows.Forms.TextBox();
+            this.textBoxInformationPanel = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -47,6 +48,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
@@ -189,6 +191,10 @@
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.textBoxInformationPanel);
+            // 
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.textBoxCurrentPlay);
@@ -198,13 +204,29 @@
             // 
             // textBoxCurrentPlay
             // 
+            this.textBoxCurrentPlay.BackColor = System.Drawing.Color.White;
             this.textBoxCurrentPlay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxCurrentPlay.Enabled = false;
+            this.textBoxCurrentPlay.ForeColor = System.Drawing.Color.Black;
             this.textBoxCurrentPlay.Location = new System.Drawing.Point(0, 0);
             this.textBoxCurrentPlay.Multiline = true;
             this.textBoxCurrentPlay.Name = "textBoxCurrentPlay";
             this.textBoxCurrentPlay.ReadOnly = true;
             this.textBoxCurrentPlay.Size = new System.Drawing.Size(580, 36);
             this.textBoxCurrentPlay.TabIndex = 0;
+            // 
+            // textBoxInformationPanel
+            // 
+            this.textBoxInformationPanel.BackColor = System.Drawing.Color.White;
+            this.textBoxInformationPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxInformationPanel.Enabled = false;
+            this.textBoxInformationPanel.ForeColor = System.Drawing.Color.Black;
+            this.textBoxInformationPanel.Location = new System.Drawing.Point(0, 0);
+            this.textBoxInformationPanel.Multiline = true;
+            this.textBoxInformationPanel.Name = "textBoxInformationPanel";
+            this.textBoxInformationPanel.ReadOnly = true;
+            this.textBoxInformationPanel.Size = new System.Drawing.Size(580, 79);
+            this.textBoxInformationPanel.TabIndex = 0;
             // 
             // MainWindow
             // 
@@ -224,6 +246,8 @@
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCard)).EndInit();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -246,5 +270,6 @@
         private System.Windows.Forms.PictureBox pictureBoxCard;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.TextBox textBoxCurrentPlay;
+        private System.Windows.Forms.TextBox textBoxInformationPanel;
     }
 }
