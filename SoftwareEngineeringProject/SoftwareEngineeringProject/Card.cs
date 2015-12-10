@@ -5,6 +5,8 @@ namespace SoftwareEngineeringProject
 {
     public abstract class Card
     {
+        public string Name { get; }
+        public string Reward { get; }
         // Return true if success, false if failure.
         public abstract bool Play(Player player);
     }

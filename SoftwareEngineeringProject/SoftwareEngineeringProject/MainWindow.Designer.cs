@@ -39,6 +39,7 @@
             this.buttonMove = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.textBoxCurrentPlay = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -46,6 +47,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -182,12 +184,27 @@
             this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(287, 3);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.textBoxCurrentPlay);
             this.splitContainer2.Size = new System.Drawing.Size(580, 119);
             this.splitContainer2.SplitterDistance = 79;
             this.splitContainer2.TabIndex = 6;
+            // 
+            // textBoxCurrentPlay
+            // 
+            this.textBoxCurrentPlay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxCurrentPlay.Location = new System.Drawing.Point(0, 0);
+            this.textBoxCurrentPlay.Multiline = true;
+            this.textBoxCurrentPlay.Name = "textBoxCurrentPlay";
+            this.textBoxCurrentPlay.ReadOnly = true;
+            this.textBoxCurrentPlay.Size = new System.Drawing.Size(580, 36);
+            this.textBoxCurrentPlay.TabIndex = 0;
             // 
             // MainWindow
             // 
@@ -207,6 +224,8 @@
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCard)).EndInit();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -226,5 +245,6 @@
         private System.Windows.Forms.Button buttonDrawCard;
         private System.Windows.Forms.PictureBox pictureBoxCard;
         private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.TextBox textBoxCurrentPlay;
     }
 }

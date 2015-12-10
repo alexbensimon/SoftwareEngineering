@@ -98,15 +98,13 @@ namespace SoftwareEngineeringProject
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            _gameEngine.PlayersList[0].DiscardCard();
-        }
-
         private void buttonDrawCard_Click(object sender, EventArgs e)
         {
             _gameEngine.PlayersList[0].DrawCard();
-            // TODO: Reset card display to the card just drawn
+
+            _indexOfCardDisplayed = _gameEngine.PlayersList[0].Hand.Count - 1;
+            ChangePictureBoxCardDisplay();
+
             buttonDrawCard.Enabled = false;
             buttonMove.Enabled = true;
             buttonPlayCard.Enabled = true;
@@ -133,7 +131,9 @@ namespace SoftwareEngineeringProject
         private void buttonPlayCard_Click(object sender, EventArgs e)
         {
             // Play the card.
-            _gameEngine.PlayersList[0].PlayCard(_indexOfCardDisplayed);
+            var success = _gameEngine.PlayersList[0].PlayCard(_indexOfCardDisplayed);
+
+            UpdateCurrentPlayPanel(0, _indexOfCardDisplayed, success);
 
             buttonPlayCard.Enabled = false;
             if (buttonMove.Enabled) buttonMove.Enabled = false;
@@ -146,11 +146,26 @@ namespace SoftwareEngineeringProject
             buttonDrawCard.Enabled = true;
         }
 
+        private void UpdateCurrentPlayPanel(int playerIndex, int cardIndexInHand, bool success)
+        {
+            // Display the card played in the Current Play panel.
+            var cardPlayed = _gameEngine.PlayersList[playerIndex].Hand.ElementAt(cardIndexInHand);
+            textBoxCurrentPlay.Text += "\n" + _gameEngine.PlayersList[playerIndex].Name + " played " +
+                                       cardPlayed.Name;
+            if (success) textBoxCurrentPlay.Text += " for " + cardPlayed.Reward;
+            else textBoxCurrentPlay.Text += " but failed";
+        }
+
         private void pictureBoxCard_Click(object sender, EventArgs e)
         {
             if (_indexOfCardDisplayed < _gameEngine.PlayersList[0].Hand.Count - 1)
                 _indexOfCardDisplayed++;
             else _indexOfCardDisplayed = 0;
+            ChangePictureBoxCardDisplay();
+        }
+
+        private void ChangePictureBoxCardDisplay()
+        {
             var cardName = _gameEngine.PlayersList[0].Hand.ElementAt(_indexOfCardDisplayed).GetType().Name;
             pictureBoxCard.Image = Image.FromFile(@"..\..\Pictures\Cards\Freshman\" + cardName + ".png");
         }
