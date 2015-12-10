@@ -10,6 +10,7 @@ namespace SoftwareEngineeringProject
         private readonly GameEngine _gameEngine;
         private readonly Label[] _labels = new Label[3];
         private int _numberOfMoves = 0;
+        private int _indexOfCardDisplayed = 0;
 
         public MainWindow()
         {
@@ -36,7 +37,7 @@ namespace SoftwareEngineeringProject
             buttonPlayCard.Enabled = false;
 
             var cardName = _gameEngine.PlayersList[0].Hand.First().GetType().Name;
-            pictureBoxCard.Image = Image.FromFile("Pictures/Cards/Freshman/" + cardName + ".png");
+            pictureBoxCard.Image = Image.FromFile(@"..\..\Pictures\Cards\Freshman\" + cardName + ".png");
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -51,7 +52,7 @@ namespace SoftwareEngineeringProject
                 Close();
             }
         }
-        
+
         private void GoToARoom(int playerId, int roomId)
         {
             // Initialize positions.
@@ -134,7 +135,7 @@ namespace SoftwareEngineeringProject
             // Play the card.
 
             buttonPlayCard.Enabled = false;
-            if (buttonMove.Enabled) buttonMove.Enabled = false; 
+            if (buttonMove.Enabled) buttonMove.Enabled = false;
 
             // Each AI plays.
             PlayComputer(_gameEngine.PlayersList[1]);
@@ -142,6 +143,15 @@ namespace SoftwareEngineeringProject
 
             // New turn.
             buttonDrawCard.Enabled = true;
+        }
+
+        private void pictureBoxCard_Click(object sender, EventArgs e)
+        {
+            if (_indexOfCardDisplayed < _gameEngine.PlayersList[0].Hand.Count - 1)
+                _indexOfCardDisplayed++;
+            else _indexOfCardDisplayed = 0;
+            var cardName = _gameEngine.PlayersList[0].Hand.ElementAt(_indexOfCardDisplayed).GetType().Name;
+            pictureBoxCard.Image = Image.FromFile(@"..\..\Pictures\Cards\Freshman\" + cardName + ".png");
         }
     }
 }
