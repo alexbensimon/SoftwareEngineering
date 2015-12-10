@@ -42,7 +42,7 @@ namespace SoftwareEngineeringProject
             var aI1 = new Player("AI 1", this);
             var aI2 = new Player("AI 2", this);
 
-            PlayersList = new List<Player> { humanPlayer, aI1, aI2 };
+            PlayersList = new List<Player> { humanPlayer, aI1, aI2 }; 
 
             // Initial position.
             foreach (var player in PlayersList)
