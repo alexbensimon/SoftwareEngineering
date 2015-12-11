@@ -1,5 +1,4 @@
-﻿using System.Collections.Specialized;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows.Forms;
 
 namespace SoftwareEngineeringProject
@@ -318,7 +317,7 @@ namespace SoftwareEngineeringProject
             if (new[] { 0, 1, 2, 3, 4, 5, 7, 8, 9, 10 }.Contains(player.Position))
             {
                 player.CraftChips++;
-                player.MovePlayer(20);
+                player.Position = 20;
                 return true;
             }
             return false;
@@ -359,7 +358,7 @@ namespace SoftwareEngineeringProject
             if (player.Position == 3)
             {
                 player.CraftChips++;
-                player.MovePlayer(20);
+                player.Position = 20;
                 return true;
             }
             return false;
@@ -382,7 +381,7 @@ namespace SoftwareEngineeringProject
                 return true;
             }
 
-            player.MovePlayer(13);
+            player.Position = 13;
             return false;
         }
     }
@@ -490,7 +489,7 @@ namespace SoftwareEngineeringProject
                 return true;
             }
 
-            player.MovePlayer(2);
+            player.Position = 2;
             return false;
         }
     }
@@ -512,7 +511,7 @@ namespace SoftwareEngineeringProject
                 return true;
             }
 
-            player.MovePlayer(20);
+            player.Position = 20;
             return false;
         }
     }
@@ -533,7 +532,7 @@ namespace SoftwareEngineeringProject
                 return true;
             }
 
-            player.MovePlayer(2);
+            player.Position = 2;
             return false;
         }
     }
@@ -684,7 +683,7 @@ namespace SoftwareEngineeringProject
                 return true;
             }
 
-            player.MovePlayer(2);
+            player.Position = 2;
             return false;
         }
     }
@@ -752,7 +751,7 @@ namespace SoftwareEngineeringProject
             }
 
             player.QualityPoints -= 5;
-            player.MovePlayer(20);
+            player.Position = 20;
             return false;
         }
     }
@@ -773,7 +772,7 @@ namespace SoftwareEngineeringProject
                 return true;
             }
 
-            player.MovePlayer(2);
+            player.Position = 2;
             return false;
         }
     }
@@ -854,7 +853,7 @@ namespace SoftwareEngineeringProject
             if (new[] { 0, 1, 2, 3, 4, 5, 7, 8, 9, 10 }.Contains(player.Position))
             {
                 player.CraftChips++;
-                player.MovePlayer(20);
+                player.Position = 20;
                 return true;
             }
             return false;
@@ -874,7 +873,7 @@ namespace SoftwareEngineeringProject
             if (player.Position == 2)
             {
                 player.CraftChips++;
-                player.MovePlayer(20);
+                player.Position = 20;
                 return true;
             }
             return false;
@@ -980,7 +979,7 @@ namespace SoftwareEngineeringProject
                 player.QualityPoints += 5;
                 return true;
             }
-            player.MovePlayer(2);
+            player.Position = 2;
             return false;
         }
     }

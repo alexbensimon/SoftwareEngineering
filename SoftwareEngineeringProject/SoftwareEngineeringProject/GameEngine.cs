@@ -7,6 +7,8 @@ namespace SoftwareEngineeringProject
     public class GameEngine
     {
         public List<Player> PlayersList { get; set; }
+        public List<Card> Deck { get; set; }
+        public List<Card> DiscardedDeck { get; set; }
 
         public List<string> RoomNames { get; set; } = new List<string>
         {
@@ -33,16 +35,13 @@ namespace SoftwareEngineeringProject
             {1000, 1160}, {594, 1406}, {816, 1347}, {1021, 891}, {1249, 887}, {1209, 1401}
         };
 
-        public List<Card> Deck = new List<Card>();
-        public List<Card> DiscardedDeck = new List<Card>();
-
         public GameEngine()
         {
             var humanPlayer = new Player("Human player", this);
             var aI1 = new Player("AI 1", this);
             var aI2 = new Player("AI 2", this);
 
-            PlayersList = new List<Player> { humanPlayer, aI1, aI2 }; 
+            PlayersList = new List<Player> { humanPlayer, aI1, aI2 };
 
             // Initial position.
             foreach (var player in PlayersList)
@@ -79,7 +78,7 @@ namespace SoftwareEngineeringProject
 
         private void InitiateDeck()
         {
-            //Add all class derived from the abstract class Card to the Deck
+            // Add all class derived from the abstract class Card to the Deck.
             foreach (Type type in
             AppDomain.CurrentDomain.GetAssemblies()
                        .SelectMany(assembly => assembly.GetTypes())
@@ -91,7 +90,7 @@ namespace SoftwareEngineeringProject
 
         private void AssignRandomHands(List<Player> playersList)
         {
-            //Initiate hands of the players with the cards on top of the deck (it has been shuffled before)
+            // Initiate hands of the players with the cards on top of the deck (it has been shuffled before).
             foreach (var player in playersList)
             {
                 for (int i = 0; i < 5; i++)
