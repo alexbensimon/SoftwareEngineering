@@ -37,6 +37,9 @@ namespace SoftwareEngineeringProject
 
         public GameEngine()
         {
+            Deck = new List<Card>();
+            DiscardedDeck = new List<Card>();
+
             var humanPlayer = new Player("Human player", this);
             var aI1 = new Player("AI 1", this);
             var aI2 = new Player("AI 2", this);
@@ -84,7 +87,8 @@ namespace SoftwareEngineeringProject
                        .SelectMany(assembly => assembly.GetTypes())
                        .Where(type => type.IsSubclassOf(typeof(Card))))
             {
-                Deck.Add((Card)Activator.CreateInstance(type));
+                var card = (Card) Activator.CreateInstance(type);
+                if(card.Year == 1) Deck.Add(card);
             }
         }
 
