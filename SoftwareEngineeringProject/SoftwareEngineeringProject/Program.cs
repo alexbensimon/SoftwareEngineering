@@ -11,6 +11,8 @@ namespace SoftwareEngineeringProject
         [STAThread]
         public static void Main()
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainWindow());
         }
     }

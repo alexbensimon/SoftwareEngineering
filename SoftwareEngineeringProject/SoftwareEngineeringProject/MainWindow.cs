@@ -9,8 +9,8 @@ namespace SoftwareEngineeringProject
     {
         private readonly GameEngine _gameEngine;
         private readonly Label[] _labels = new Label[3];
-        private int _numberOfMoves = 0;
-        private int _indexOfCardDisplayed = 0;
+        private int _numberOfMoves;
+        private int _indexOfCardDisplayed;
 
         public MainWindow()
         {
@@ -87,6 +87,11 @@ namespace SoftwareEngineeringProject
             var randomDestinationId = _gameEngine.RoomsAvailable[player.Position]
                 [new Random().Next(_gameEngine.RoomsAvailable[player.Position].Count)];
             GoToARoom(_gameEngine.PlayersList.IndexOf(player), randomDestinationId);
+
+            // Play a random card.
+            var randomIndex = new Random().Next(player.Hand.Count);
+            var success = player.PlayCard(randomIndex);
+            UpdateCurrentPlayPanel(_gameEngine.PlayersList.IndexOf(player), randomIndex, success);
         }
 
         private void UpdateListboxDisplay(int roomId)
@@ -148,6 +153,12 @@ namespace SoftwareEngineeringProject
             // Each AI plays.
             PlayComputer(_gameEngine.PlayersList[1]);
             PlayComputer(_gameEngine.PlayersList[2]);
+
+            // Update position of all the players.
+            foreach (var player in _gameEngine.PlayersList)
+            {
+                GoToARoom(_gameEngine.PlayersList.IndexOf(player), player.Position);
+            }
 
             // New turn.
             UpdateInformationPanel();

@@ -64,11 +64,6 @@ namespace SoftwareEngineeringProject
             _gameEngine.Deck.Remove(_gameEngine.Deck.First());
         }
 
-        public void MovePlayer(int roomId)
-        {
-
-        }
-
         public void GetAChipOfHisChoice()
         {
             var form = new UserChoiceForm("Select the chip you want", new[] { "Learning Chip", "Craft Chip", "Integrity Chip" });
