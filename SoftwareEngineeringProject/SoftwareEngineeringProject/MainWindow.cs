@@ -137,6 +137,11 @@ namespace SoftwareEngineeringProject
 
             UpdateCurrentPlayPanel(0, _indexOfCardDisplayed, success);
 
+            //Remove the card from the Hand and update the display
+            _gameEngine.PlayersList[0].Hand.RemoveAt(_indexOfCardDisplayed);
+            _indexOfCardDisplayed= _gameEngine.PlayersList[0].Hand.Count - 1;
+            ChangePictureBoxCardDisplay();
+
             buttonPlayCard.Enabled = false;
             if (buttonMove.Enabled) buttonMove.Enabled = false;
 

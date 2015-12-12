@@ -9,7 +9,7 @@ namespace SoftwareEngineeringProject
         /// Point d'entrée principal de l'application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.Run(new MainWindow());
         }

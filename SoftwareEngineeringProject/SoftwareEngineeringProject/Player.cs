@@ -93,13 +93,17 @@ namespace SoftwareEngineeringProject
 
         public bool PlayCard(int indexCardInHand)
         {
-            // If failure.
-            if (!Hand.ElementAt(indexCardInHand).Play(this))
-            {
-                QualityPoints -= 2;
-                return false;
-            }
-            return true;
+            var cardInHand = Hand.ElementAt(indexCardInHand);
+            var success = cardInHand.Play(this);
+            Hand.Remove(cardInHand);
+            _gameEngine.DiscardedDeck.Add(cardInHand);
+
+            //If success
+            if (success) return true;
+
+            //If failure
+            QualityPoints -= 2;
+            return false;
         }
     }
 }
