@@ -156,8 +156,8 @@
             // textBoxInformationPanel
             // 
             this.textBoxInformationPanel.BackColor = System.Drawing.Color.White;
+            this.textBoxInformationPanel.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBoxInformationPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxInformationPanel.Enabled = false;
             this.textBoxInformationPanel.ForeColor = System.Drawing.Color.Black;
             this.textBoxInformationPanel.Location = new System.Drawing.Point(0, 0);
             this.textBoxInformationPanel.Multiline = true;
@@ -165,12 +165,13 @@
             this.textBoxInformationPanel.ReadOnly = true;
             this.textBoxInformationPanel.Size = new System.Drawing.Size(580, 79);
             this.textBoxInformationPanel.TabIndex = 0;
+            this.textBoxInformationPanel.TabStop = false;
             // 
             // textBoxCurrentPlay
             // 
             this.textBoxCurrentPlay.BackColor = System.Drawing.Color.White;
+            this.textBoxCurrentPlay.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBoxCurrentPlay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCurrentPlay.Enabled = false;
             this.textBoxCurrentPlay.ForeColor = System.Drawing.Color.Black;
             this.textBoxCurrentPlay.Location = new System.Drawing.Point(0, 0);
             this.textBoxCurrentPlay.Multiline = true;
@@ -178,6 +179,7 @@
             this.textBoxCurrentPlay.ReadOnly = true;
             this.textBoxCurrentPlay.Size = new System.Drawing.Size(580, 39);
             this.textBoxCurrentPlay.TabIndex = 0;
+            this.textBoxCurrentPlay.TabStop = false;
             // 
             // pictureBoxCard
             // 
