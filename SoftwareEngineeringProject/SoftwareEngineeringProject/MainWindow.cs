@@ -81,7 +81,6 @@ namespace SoftwareEngineeringProject
             return count;
         }
 
-        // TODO: Pourquoi les 2 IA vont au meme endroit ?
         private void PlayComputer(Player player)
         {
             var randomDestinationId = _gameEngine.RoomsAvailable[player.Position]
@@ -92,6 +91,8 @@ namespace SoftwareEngineeringProject
             var randomIndex = new Random().Next(player.Hand.Count);
             var success = player.PlayCard(randomIndex);
             UpdateCurrentPlayPanel(_gameEngine.PlayersList.IndexOf(player), randomIndex, success);
+
+            if (_gameEngine.CurrentYear == 1) _gameEngine.PassToSophomoreYearIfNeeded();
         }
 
         private void UpdateListboxDisplay(int roomId)
@@ -145,6 +146,13 @@ namespace SoftwareEngineeringProject
             buttonPlayCard.Enabled = false;
             if (buttonMove.Enabled) buttonMove.Enabled = false;
 
+            while (_gameEngine.PlayersList[0].Hand.Count > 7)
+            {
+                _gameEngine.PlayersList[0].DiscardCard();
+            }
+
+            if(_gameEngine.CurrentYear == 1) _gameEngine.PassToSophomoreYearIfNeeded();
+
             // Each AI plays.
             PlayComputer(_gameEngine.PlayersList[1]);
             PlayComputer(_gameEngine.PlayersList[2]);
@@ -180,8 +188,12 @@ namespace SoftwareEngineeringProject
 
         private void ChangePictureBoxCardDisplay()
         {
-            var cardName = _gameEngine.PlayersList[0].Hand.ElementAt(_indexOfCardDisplayed).GetType().Name;
-            pictureBoxCard.Image = Image.FromFile(@"..\..\Pictures\Cards\Freshman\" + cardName + ".png");
+            var card = _gameEngine.PlayersList[0].Hand.ElementAt(_indexOfCardDisplayed);
+            var cardName = card.GetType().Name;
+            string year = null;
+            if (card.Year == 1) year = "Freshman";
+            else if (card.Year == 2) year = "Sophomore";
+            pictureBoxCard.Image = Image.FromFile(@"..\..\Pictures\Cards\" + year + @"\" + cardName + ".png");
         }
 
         private void UpdateInformationPanel()

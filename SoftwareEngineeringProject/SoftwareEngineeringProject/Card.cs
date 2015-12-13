@@ -191,7 +191,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Finding : Card
+    class Finding : Card
     {
         public override string Name => "Finding the Lab";
 
@@ -210,7 +210,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Goodbye : Card
+    class Goodbye : Card
     {
         public override string Name => "Goodbye, Professor";
 
@@ -231,7 +231,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Peace : Card
+    class Peace : Card
     {
         public override string Name => "Enjoying the Peace";
 
@@ -267,7 +267,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Buddy : Card
+    class Buddy : Card
     {
         public override string Name => "Buddy Up";
 
@@ -303,7 +303,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Late : Card
+    class Late : Card
     {
         public override string Name => "Late for Class";
 
@@ -313,7 +313,6 @@ namespace SoftwareEngineeringProject
 
         public override bool Play(Player player)
         {
-            // TODO: checker si c'est bien ca la liste
             if (new[] { 0, 1, 2, 3, 4, 5, 7, 8, 9, 10 }.Contains(player.Position))
             {
                 player.CraftChips++;
@@ -324,7 +323,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Physics : Card
+    class Physics : Card
     {
         public override string Name => "Physics 151";
 
@@ -345,7 +344,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class BigGame : Card
+    class BigGame : Card
     {
         public override string Name => "The Big Game";
 
@@ -365,7 +364,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Kin253 : Card
+    class Kin253 : Card
     {
         public override string Name => "KIN 253";
 
@@ -386,7 +385,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Math123 : Card
+    class Math123 : Card
     {
         public override string Name => "Math 123";
 
@@ -408,7 +407,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Netbeans : Card
+    class Netbeans : Card
     {
         public override string Name => "Learning Netbeans";
 
@@ -430,7 +429,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Major : Card
+    class Major : Card
     {
         public override string Name => "Choosing a Major";
 
@@ -451,7 +450,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class SoccerClass : Card
+    class SoccerClass : Card
     {
         public override string Name => "Pass Soccer Class";
 
@@ -472,7 +471,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class ScoreGoal : Card
+    class ScoreGoal : Card
     {
         public override string Name => "Score a Goal!";
 
@@ -494,7 +493,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class FallPond : Card
+    class FallPond : Card
     {
         public override string Name => "Fall in the Pond";
 
@@ -516,7 +515,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class MakeDeansList : Card
+    class MakeDeansList : Card
     {
         public override string Name => "Make the Dean's List";
 
@@ -537,7 +536,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class NewLaptop : Card
+    class NewLaptop : Card
     {
         public override string Name => "A New Laptop";
 
@@ -559,7 +558,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class MeetDean : Card
+    class MeetDean : Card
     {
         public override string Name => "Meet the Dean";
 
@@ -581,7 +580,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class LoudBuzzing : Card
+    class LoudBuzzing : Card
     {
         public override string Name => "Loud Buzzing";
 
@@ -602,7 +601,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class ProgramCrashes : Card
+    class ProgramCrashes : Card
     {
         public override string Name => "Program crashes";
 
@@ -624,7 +623,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class ProfessorEnglert : Card
+    class ProfessorEnglert : Card
     {
         public override string Name => "Professor Englert";
 
@@ -645,7 +644,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class PressRightFloor : Card
+    class PressRightFloor : Card
     {
         public override string Name => "Press the Right Floor";
 
@@ -666,7 +665,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class SoccerGoalie : Card
+    class SoccerGoalie : Card
     {
         public override string Name => "Soccer Goalie";
 
@@ -688,7 +687,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class ElectiveClass : Card
+    class ElectiveClass : Card
     {
         public override string Name => "Elective Class";
 
@@ -710,7 +709,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class OralCommunication : Card
+    class OralCommunication : Card
     {
         public override string Name => "Oral Communication";
 
@@ -732,7 +731,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Hoffman : Card
+    class Hoffman : Card
     {
         public override string Name => "Professor Hoffman";
 
@@ -756,7 +755,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Chem111 : Card
+    class Chem111 : Card
     {
         public override string Name => "CHEM 111";
 
@@ -777,7 +776,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Outpost : Card
+    class Outpost : Card
     {
         public override string Name => "The Outpost";
 
@@ -796,7 +795,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class LearningLinux : Card
+    class LearningLinux : Card
     {
         public override string Name => "Learning Linux";
 
@@ -818,7 +817,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class MakeFriend : Card
+    class MakeFriend : Card
     {
         public override string Name => "Make a Friend";
 
@@ -840,7 +839,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class EnjoyingNature : Card
+    class EnjoyingNature : Card
     {
         public override string Name => "Enjoying Nature";
 
@@ -860,7 +859,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class StudentParking : Card
+    class StudentParking : Card
     {
         public override string Name => "Student Parking";
 
@@ -880,7 +879,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class LbsuVsUci : Card
+    class LbsuVsUci : Card
     {
         public override string Name => "LBSU vs UCI";
 
@@ -899,7 +898,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class CarPool : Card
+    class CarPool : Card
     {
         public override string Name => "Car Pool";
 
@@ -920,7 +919,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Cecs274 : Card
+    class Cecs274 : Card
     {
         public override string Name => "CECS 274";
 
@@ -941,7 +940,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Cecs201 : Card
+    class Cecs201 : Card
     {
         public override string Name => "CECS 201";
 
@@ -964,7 +963,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Engl317 : Card
+    class Engl317 : Card
     {
         public override string Name => "ENGL 317";
 
@@ -984,7 +983,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Phys152 : Card
+    class Phys152 : Card
     {
         public override string Name => "PHYS 152";
 
@@ -1005,7 +1004,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Phil270 : Card
+    class Phil270 : Card
     {
         public override string Name => "PHIL 270";
 
@@ -1026,7 +1025,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Cecs228 : Card
+    class Cecs228 : Card
     {
         public override string Name => "CECS 228";
 
@@ -1048,7 +1047,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Cecs277 : Card
+    class Cecs277 : Card
     {
         public override string Name => "CECS 277";
 
@@ -1070,7 +1069,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Cecs285 : Card
+    class Cecs285 : Card
     {
         public override string Name => "CECS 285";
 
@@ -1091,7 +1090,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class Cecs282 : Card
+    class Cecs282 : Card
     {
         public override string Name => "CECS 282";
 
@@ -1113,7 +1112,7 @@ namespace SoftwareEngineeringProject
         }
     }
 
-    internal class HaveASwim : Card
+    class HaveASwim : Card
     {
         public override string Name => "Have a Swim";
 

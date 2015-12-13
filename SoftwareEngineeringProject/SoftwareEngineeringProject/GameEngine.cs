@@ -9,6 +9,7 @@ namespace SoftwareEngineeringProject
         public List<Player> PlayersList { get; set; }
         public List<Card> Deck { get; set; }
         public List<Card> DiscardedDeck { get; set; }
+        public int CurrentYear { get; set; }
 
         public List<string> RoomNames { get; set; } = new List<string>
         {
@@ -39,6 +40,7 @@ namespace SoftwareEngineeringProject
         {
             Deck = new List<Card>();
             DiscardedDeck = new List<Card>();
+            CurrentYear = 1;
 
             var humanPlayer = new Player("Human player", this);
             var aI1 = new Player("AI 1", this);
@@ -55,10 +57,10 @@ namespace SoftwareEngineeringProject
             AssignRandomSkillSets(PlayersList);
             InitiateDeck();
             ShuffleDeck();
-            AssignRandomHands(PlayersList);
+            AssignRandomHands();
         }
 
-        private static void AssignRandomSkillSets(List<Player> playersList)
+        private void AssignRandomSkillSets(List<Player> playersList)
         {
             var skillSets = new List<List<int>> {
                 new List<int> {2, 2, 2},
@@ -87,15 +89,15 @@ namespace SoftwareEngineeringProject
                        .SelectMany(assembly => assembly.GetTypes())
                        .Where(type => type.IsSubclassOf(typeof(Card))))
             {
-                var card = (Card) Activator.CreateInstance(type);
-                if(card.Year == 1) Deck.Add(card);
+                var card = (Card)Activator.CreateInstance(type);
+                if (card.Year == 1) Deck.Add(card);
             }
         }
 
-        private void AssignRandomHands(List<Player> playersList)
+        private void AssignRandomHands()
         {
             // Initiate hands of the players with the cards on top of the deck (it has been shuffled before).
-            foreach (var player in playersList)
+            foreach (var player in PlayersList)
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -118,6 +120,62 @@ namespace SoftwareEngineeringProject
                 int index = rnd.Next(tmpDeckList.Count);
                 Deck.Add(tmpDeckList.ElementAt(index));
                 tmpDeckList.RemoveAt(index);
+            }
+        }
+
+        public void VerifyIfDeckEmpty()
+        {
+            if (Deck.Count == 0)
+            {
+                Deck.AddRange(DiscardedDeck);
+                DiscardedDeck = new List<Card>();
+                ShuffleDeck();
+            }
+        }
+
+        public void PassToSophomoreYearIfNeeded()
+        {
+            int totalQp = 0;
+            foreach (var player in PlayersList)
+            {
+                totalQp += player.QualityPoints;
+            }
+            if (totalQp >= 60)
+            {
+                CurrentYear = 2;
+                Deck.AddRange(DiscardedDeck);
+                DiscardedDeck = new List<Card>();
+                foreach (var player in PlayersList)
+                {
+                    Deck.AddRange(player.Hand);
+                    player.Hand = new List<Card>();
+                }
+
+                var tempDeck = Deck;
+                // Remove some Freshman cards.
+                foreach (var card in tempDeck)
+                {
+                    if (new[]
+                    {
+                        "CECS 105", "CECS 100", "Math 122", "Professor Murgolo's CECS 174 Class",
+                        "Math 123", "Physics 151", "KIN 253", "Pass Soccer Class", "Elective Class",
+                        "Oral Communication", "CHEM 111"
+                    }.Contains(card.Name))
+                        Deck.Remove(card);
+                }
+
+                // Add some Sophomore cards.
+                foreach (Type type in AppDomain.CurrentDomain.GetAssemblies()
+                       .SelectMany(assembly => assembly.GetTypes())
+                       .Where(type => type.IsSubclassOf(typeof(Card))))
+                {
+                    var card = (Card)Activator.CreateInstance(type);
+                    if (card.Year == 2) Deck.Add(card);
+                }
+
+                ShuffleDeck();
+
+                AssignRandomHands();
             }
         }
     }

@@ -62,6 +62,7 @@ namespace SoftwareEngineeringProject
         {
             Hand.Add(_gameEngine.Deck.First());
             _gameEngine.Deck.Remove(_gameEngine.Deck.First());
+            _gameEngine.VerifyIfDeckEmpty();
         }
 
         public void GetAChipOfHisChoice()
@@ -89,12 +90,17 @@ namespace SoftwareEngineeringProject
         public bool PlayCard(int indexCardInHand)
         {
             // If failure.
+            bool fail = true;
             if (!Hand.ElementAt(indexCardInHand).Play(this))
             {
                 QualityPoints -= 2;
-                return false;
+                fail = false;
             }
-            return true;
+
+            _gameEngine.DiscardedDeck.Add(Hand.ElementAt(indexCardInHand));
+            Hand.RemoveAt(indexCardInHand);
+
+            return fail;
         }
     }
 }
