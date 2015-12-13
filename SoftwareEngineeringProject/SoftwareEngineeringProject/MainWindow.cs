@@ -143,7 +143,7 @@ namespace SoftwareEngineeringProject
 
             UpdateCurrentPlayPanel(0, _indexOfCardDisplayed, success);
 
-            //Remove the card from the Hand and update the display
+            // Remove the card from the Hand and update the display.
             _gameEngine.PlayersList[0].Hand.RemoveAt(_indexOfCardDisplayed);
             _indexOfCardDisplayed= _gameEngine.PlayersList[0].Hand.Count - 1;
             ChangePictureBoxCardDisplay();
@@ -173,14 +173,15 @@ namespace SoftwareEngineeringProject
             buttonDrawCard.Enabled = true;
         }
 
-        private void UpdateCurrentPlayPanel(int playerIndex, int cardIndexInHand, bool success)
+        private void UpdateCurrentPlayPanel(int playerIndex, int cardIndexInHand, int success)
         {
             // Display the card played in the Current Play panel.
             var cardPlayed = _gameEngine.PlayersList[playerIndex].Hand.ElementAt(cardIndexInHand);
             textBoxCurrentPlay.Text += _gameEngine.PlayersList[playerIndex].Name + " played " +
                                        cardPlayed.Name;
-            if (success) textBoxCurrentPlay.Text += " for " + cardPlayed.Reward + "\r\n";
-            else textBoxCurrentPlay.Text += " but failed" + "\r\n";
+            if(success == 0) textBoxCurrentPlay.Text += " but in the wrong room" + "\r\n";
+            else if (success == 1) textBoxCurrentPlay.Text += " but failed" + "\r\n";
+            else if (success == 2) textBoxCurrentPlay.Text += " for " + cardPlayed.Reward + "\r\n";            
         }
 
         private void pictureBoxCard_Click(object sender, EventArgs e)

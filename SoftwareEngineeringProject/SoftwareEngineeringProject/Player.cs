@@ -87,20 +87,17 @@ namespace SoftwareEngineeringProject
             }
         }
 
-        public bool PlayCard(int indexCardInHand)
+        public int PlayCard(int indexCardInHand)
         {
-            // If failure.
-            bool fail = true;
-            if (!Hand.ElementAt(indexCardInHand).Play(this))
+            var success = 0;
+            var card = Hand.ElementAt(indexCardInHand);
+            if (card.CorrectRooms.Contains(Position))
             {
-                QualityPoints -= 2;
-                fail = false;
+                success = 1;
+                if (card.Play(this)) return 2;
             }
-
-            _gameEngine.DiscardedDeck.Add(Hand.ElementAt(indexCardInHand));
-            Hand.RemoveAt(indexCardInHand);
-
-            return fail;
+            QualityPoints -= 2;
+            return success;
         }
     }
 }
