@@ -33,24 +33,24 @@
             this.labelPlayer2 = new System.Windows.Forms.Label();
             this.labelPlayer1 = new System.Windows.Forms.Label();
             this.pictureBoxMap = new System.Windows.Forms.PictureBox();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.textBoxInformationPanel = new System.Windows.Forms.TextBox();
+            this.textBoxCurrentPlay = new System.Windows.Forms.TextBox();
             this.pictureBoxCard = new System.Windows.Forms.PictureBox();
             this.buttonPlayCard = new System.Windows.Forms.Button();
             this.buttonDrawCard = new System.Windows.Forms.Button();
             this.buttonMove = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.textBoxCurrentPlay = new System.Windows.Forms.TextBox();
-            this.textBoxInformationPanel = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCard)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -82,6 +82,7 @@
             this.splitContainer1.Size = new System.Drawing.Size(870, 387);
             this.splitContainer1.SplitterDistance = 258;
             this.splitContainer1.TabIndex = 0;
+            this.splitContainer1.TabStop = false;
             // 
             // labelPlayer3
             // 
@@ -128,6 +129,55 @@
             this.pictureBoxMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxMap.TabIndex = 0;
             this.pictureBoxMap.TabStop = false;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer2.IsSplitterFixed = true;
+            this.splitContainer2.Location = new System.Drawing.Point(287, 3);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.textBoxInformationPanel);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.textBoxCurrentPlay);
+            this.splitContainer2.Size = new System.Drawing.Size(580, 119);
+            this.splitContainer2.SplitterDistance = 79;
+            this.splitContainer2.SplitterWidth = 1;
+            this.splitContainer2.TabIndex = 6;
+            this.splitContainer2.TabStop = false;
+            // 
+            // textBoxInformationPanel
+            // 
+            this.textBoxInformationPanel.BackColor = System.Drawing.Color.White;
+            this.textBoxInformationPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxInformationPanel.Enabled = false;
+            this.textBoxInformationPanel.ForeColor = System.Drawing.Color.Black;
+            this.textBoxInformationPanel.Location = new System.Drawing.Point(0, 0);
+            this.textBoxInformationPanel.Multiline = true;
+            this.textBoxInformationPanel.Name = "textBoxInformationPanel";
+            this.textBoxInformationPanel.ReadOnly = true;
+            this.textBoxInformationPanel.Size = new System.Drawing.Size(580, 79);
+            this.textBoxInformationPanel.TabIndex = 0;
+            // 
+            // textBoxCurrentPlay
+            // 
+            this.textBoxCurrentPlay.BackColor = System.Drawing.Color.White;
+            this.textBoxCurrentPlay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxCurrentPlay.Enabled = false;
+            this.textBoxCurrentPlay.ForeColor = System.Drawing.Color.Black;
+            this.textBoxCurrentPlay.Location = new System.Drawing.Point(0, 0);
+            this.textBoxCurrentPlay.Multiline = true;
+            this.textBoxCurrentPlay.Name = "textBoxCurrentPlay";
+            this.textBoxCurrentPlay.ReadOnly = true;
+            this.textBoxCurrentPlay.Size = new System.Drawing.Size(580, 39);
+            this.textBoxCurrentPlay.TabIndex = 0;
             // 
             // pictureBoxCard
             // 
@@ -181,53 +231,6 @@
             this.listBox1.Size = new System.Drawing.Size(103, 30);
             this.listBox1.TabIndex = 0;
             // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(287, 3);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.textBoxInformationPanel);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.textBoxCurrentPlay);
-            this.splitContainer2.Size = new System.Drawing.Size(580, 119);
-            this.splitContainer2.SplitterDistance = 79;
-            this.splitContainer2.TabIndex = 6;
-            // 
-            // textBoxCurrentPlay
-            // 
-            this.textBoxCurrentPlay.BackColor = System.Drawing.Color.White;
-            this.textBoxCurrentPlay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCurrentPlay.Enabled = false;
-            this.textBoxCurrentPlay.ForeColor = System.Drawing.Color.Black;
-            this.textBoxCurrentPlay.Location = new System.Drawing.Point(0, 0);
-            this.textBoxCurrentPlay.Multiline = true;
-            this.textBoxCurrentPlay.Name = "textBoxCurrentPlay";
-            this.textBoxCurrentPlay.ReadOnly = true;
-            this.textBoxCurrentPlay.Size = new System.Drawing.Size(580, 36);
-            this.textBoxCurrentPlay.TabIndex = 0;
-            // 
-            // textBoxInformationPanel
-            // 
-            this.textBoxInformationPanel.BackColor = System.Drawing.Color.White;
-            this.textBoxInformationPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxInformationPanel.Enabled = false;
-            this.textBoxInformationPanel.ForeColor = System.Drawing.Color.Black;
-            this.textBoxInformationPanel.Location = new System.Drawing.Point(0, 0);
-            this.textBoxInformationPanel.Multiline = true;
-            this.textBoxInformationPanel.Name = "textBoxInformationPanel";
-            this.textBoxInformationPanel.ReadOnly = true;
-            this.textBoxInformationPanel.Size = new System.Drawing.Size(580, 79);
-            this.textBoxInformationPanel.TabIndex = 0;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,13 +248,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMap)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCard)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCard)).EndInit();
             this.ResumeLayout(false);
 
         }
