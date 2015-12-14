@@ -16,7 +16,7 @@ namespace SoftwareEngineeringProject
 
         public string GetCmbBoxSelectedContent()
         {
-            return cmbBox.SelectedText;
+            return cmbBox.Text;
         }
 
         public int GetCmbBoxSelectedId()

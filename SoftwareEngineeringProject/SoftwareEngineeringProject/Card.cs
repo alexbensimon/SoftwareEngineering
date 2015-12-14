@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace SoftwareEngineeringProject
 {
@@ -52,17 +53,35 @@ namespace SoftwareEngineeringProject
 
         public override bool Play(Player player)
         {
-            var form = new UserChoiceForm("Select the chip you want", new[] { "Learning Chip", "Integrity Chip" });
-            form.ShowDialog();
-            if (form.DialogResult == DialogResult.OK)
+            if (player.Name == "Human Player")
             {
-                switch (form.GetCmbBoxSelectedContent())
+                var form = new UserChoiceForm("Select the chip you want", new[] { "Learning Chip", "Integrity Chip" });
+                form.ShowDialog();
+                if (form.DialogResult == DialogResult.OK)
                 {
-                    case "Learning Chip":
+                    switch (form.GetCmbBoxSelectedContent())
+                    {
+                        case "Learning Chip":
+                            _reward = "1 Learning Chip";
+                            player.LearningChips++;
+                            break;
+                        case "Integrity Chip":
+                            _reward = "1 Integrity Chip";
+                            player.IntegrityChips++;
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                var bonus = new Random().Next(2);
+                switch (bonus)
+                {
+                    case 0:
                         _reward = "1 Learning Chip";
                         player.LearningChips++;
                         break;
-                    case "Integrity Chip":
+                    case 1:
                         _reward = "1 Integrity Chip";
                         player.IntegrityChips++;
                         break;
@@ -137,15 +156,34 @@ namespace SoftwareEngineeringProject
         public override int[] CorrectRooms => new[] { 6 };
 
         public override bool Play(Player player)
-        {
-            _reward = "1 Learning Chip";
-            player.LearningChips++;
-            if (MessageBox.Show("Choose!", "Do you want to discard a game card to get another Learning Chips?",
-                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+        {            
+            if (player.Name == "Human Player")
             {
-                _reward = "2 Learning Chips and 1 discarded card";
+                _reward = "1 Learning Chip";
                 player.LearningChips++;
-                player.DiscardCard();
+                if (MessageBox.Show("Choose!", "Do you want to discard a game card to get another Learning Chips?",
+                        MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    _reward = "2 Learning Chips and 1 discarded card";
+                    player.LearningChips++;
+                    player.DiscardCard();
+                }
+            }
+            else
+            {
+                var bonus = new Random().Next(2);
+                switch (bonus)
+                {
+                    case 0:
+                        _reward = "1 Learning Chip";
+                        player.LearningChips++;
+                        break;
+                    case 1:
+                        _reward = "2 Learning Chips and 1 discarded card";
+                        player.LearningChips++;
+                        player.DiscardCard();
+                        break;
+                }
             }
             return true;
         }
@@ -187,25 +225,42 @@ namespace SoftwareEngineeringProject
     class Peace : Card
     {
         public override string Name => "Enjoying the Peace";
-        private string _reward = "1 Integrity Chip or 1 Integrity Chip";
+        private string _reward = "1 Learning Chip or 1 Integrity Chip";
         public override string Reward => _reward;
         public override int Year => 1;
         public override int[] CorrectRooms => new[] { 1 };
 
         public override bool Play(Player player)
         {
-            var form = new UserChoiceForm("Select the chip you want", new[] { "Learning Chip", "Integrity Chip" });
-            form.ShowDialog();
-
-            if (form.DialogResult == DialogResult.OK)
+            if (player.Name == "Human Player")
             {
-                switch (form.GetCmbBoxSelectedContent())
+                var form = new UserChoiceForm("Select the chip you want", new[] { "Learning Chip", "Integrity Chip" });
+                form.ShowDialog();
+                if (form.DialogResult == DialogResult.OK)
                 {
-                    case "Learning Chip":
+                    switch (form.GetCmbBoxSelectedContent())
+                    {
+                        case "Learning Chip":
+                            _reward = "1 Learning Chip";
+                            player.LearningChips++;
+                            break;
+                        case "Integrity Chip":
+                            _reward = "1 Integrity Chip";
+                            player.IntegrityChips++;
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                var bonus = new Random().Next(2);
+                switch (bonus)
+                {
+                    case 0:
                         _reward = "1 Learning Chip";
                         player.LearningChips++;
                         break;
-                    case "Integrity Chip":
+                    case 1:
                         _reward = "1 Integrity Chip";
                         player.IntegrityChips++;
                         break;
@@ -225,18 +280,35 @@ namespace SoftwareEngineeringProject
 
         public override bool Play(Player player)
         {
-            var form = new UserChoiceForm("Select the chip you want", new[] { "Learning Chip", "Craft Chip" });
-            form.ShowDialog();
-
-            if (form.DialogResult == DialogResult.OK)
+            if (player.Name == "Human Player")
             {
-                switch (form.GetCmbBoxSelectedContent())
+                var form = new UserChoiceForm("Select the chip you want", new[] {"Learning Chip", "Craft Chip"});
+                form.ShowDialog();
+                if (form.DialogResult == DialogResult.OK)
                 {
-                    case "Learning Chip":
+                    switch (form.GetCmbBoxSelectedContent())
+                    {
+                        case "Learning Chip":
+                            _reward = "1 Learning Chip";
+                            player.LearningChips++;
+                            break;
+                        case "Craft Chip":
+                            _reward = "1 Craft Chip";
+                            player.CraftChips++;
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                var bonus = new Random().Next(2);
+                switch (bonus)
+                {
+                    case 0:
                         _reward = "1 Learning Chip";
                         player.LearningChips++;
                         break;
-                    case "Craft Chip":
+                    case 1:
                         _reward = "1 Craft Chip";
                         player.CraftChips++;
                         break;

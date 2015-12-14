@@ -34,7 +34,7 @@ namespace SoftwareEngineeringProject
 
             foreach (var card in Hand)
             {
-                cardNames[counter] = card.GetType().Name;
+                cardNames[counter] = card.Name;
                 counter++;
             }
             var form = new UserChoiceForm("Choose the card you want to discard", cardNames);
