@@ -156,7 +156,7 @@ namespace SoftwareEngineeringProject
         public override int[] CorrectRooms => new[] { 6 };
 
         public override bool Play(Player player)
-        {            
+        {
             if (player.Name == "Human Player")
             {
                 _reward = "1 Learning Chip";
@@ -282,7 +282,7 @@ namespace SoftwareEngineeringProject
         {
             if (player.Name == "Human Player")
             {
-                var form = new UserChoiceForm("Select the chip you want", new[] {"Learning Chip", "Craft Chip"});
+                var form = new UserChoiceForm("Select the chip you want", new[] { "Learning Chip", "Craft Chip" });
                 form.ShowDialog();
                 if (form.DialogResult == DialogResult.OK)
                 {
@@ -749,12 +749,8 @@ namespace SoftwareEngineeringProject
 
         public override bool Play(Player player)
         {
-            if (player.CraftChips >= 6)
-            {
-                player.GetAChipOfHisChoice();
-                return true;
-            }
-            return false;
+            player.GetAChipOfHisChoice();
+            return true;
         }
     }
 
