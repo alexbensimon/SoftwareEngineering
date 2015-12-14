@@ -10,6 +10,7 @@ namespace SoftwareEngineeringProject
         public List<Card> Deck { get; set; }
         public List<Card> DiscardedDeck { get; set; }
         public int CurrentYear { get; set; }
+        public Player Winner { get; set; }
 
         public List<string> RoomNames { get; set; } = new List<string>
         {
@@ -177,6 +178,48 @@ namespace SoftwareEngineeringProject
 
                 AssignRandomHands();
             }
+        }
+
+        public void ApplyQpStep()
+        {
+            int totalQp = 0;
+            foreach (var player in PlayersList)
+            {
+                totalQp += player.QualityPoints;
+            }
+
+            if (totalQp > 0 && totalQp % 15 == 0)
+            {
+                PlayersList[0].GetAChipOfHisChoice();
+                for (int i = 1; i < 3; i++)
+                {
+                    var player = PlayersList[i];
+                    var bonus = new Random().Next(3);
+                    switch (bonus)
+                    {
+                        case 0:
+                            player.LearningChips++;
+                            break;
+                        case 1:
+                            player.CraftChips++;
+                            break;
+                        case 2:
+                            player.IntegrityChips++;
+                            break;
+                    }
+                }
+            }
+        }
+
+        public bool IsGameOver()
+        {
+            foreach (var player in PlayersList)
+                if (player.QualityPoints >= 100)
+                {
+                    Winner = player;
+                    return true;
+                }
+            return false;
         }
     }
 }

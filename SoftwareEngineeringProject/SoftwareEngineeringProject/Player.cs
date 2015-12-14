@@ -91,6 +91,7 @@ namespace SoftwareEngineeringProject
         {
             var success = 0;
             var card = Hand.ElementAt(indexCardInHand);
+            _gameEngine.DiscardedDeck.Add(card);
             if (card.CorrectRooms.Contains(Position))
             {
                 success = 1;

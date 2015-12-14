@@ -177,6 +177,7 @@
             this.textBoxCurrentPlay.Multiline = true;
             this.textBoxCurrentPlay.Name = "textBoxCurrentPlay";
             this.textBoxCurrentPlay.ReadOnly = true;
+            this.textBoxCurrentPlay.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxCurrentPlay.Size = new System.Drawing.Size(580, 39);
             this.textBoxCurrentPlay.TabIndex = 0;
             this.textBoxCurrentPlay.TabStop = false;

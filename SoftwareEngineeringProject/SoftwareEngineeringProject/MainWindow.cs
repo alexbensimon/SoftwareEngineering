@@ -83,16 +83,32 @@ namespace SoftwareEngineeringProject
 
         private void PlayComputer(Player player)
         {
-            var randomDestinationId = _gameEngine.RoomsAvailable[player.Position]
+            var position = player.Position;
+            // Move between 0 and 3 times.
+            var numberOfMoves = new Random().Next(4);
+            for (int i = 0; i < numberOfMoves; i++)
+            {
+                var randomDestinationId = _gameEngine.RoomsAvailable[player.Position]
                 [new Random().Next(_gameEngine.RoomsAvailable[player.Position].Count)];
-            GoToARoom(_gameEngine.PlayersList.IndexOf(player), randomDestinationId);
+                GoToARoom(_gameEngine.PlayersList.IndexOf(player), randomDestinationId);
+            }
 
             // Play a random card.
-            var randomIndex = new Random().Next(player.Hand.Count);
-            var success = player.PlayCard(randomIndex);
-            UpdateCurrentPlayPanel(_gameEngine.PlayersList.IndexOf(player), randomIndex, success);
+            var randomCardIndex = new Random().Next(player.Hand.Count);
+            var success = player.PlayCard(randomCardIndex);
+            UpdateCurrentPlayPanel(_gameEngine.PlayersList.IndexOf(player), randomCardIndex, success);
+
+            // Remove the card from the hand.
+            player.Hand.RemoveAt(randomCardIndex);
+
+            var newPosition = player.Position;
+            if (newPosition != position) GoToARoom(_gameEngine.PlayersList.IndexOf(player), newPosition);
+
+            while (player.Hand.Count > 7) player.LoseCard();
 
             if (_gameEngine.CurrentYear == 1) _gameEngine.PassToSophomoreYearIfNeeded();
+            _gameEngine.ApplyQpStep();
+            if (_gameEngine.IsGameOver()) EndGame();
         }
 
         private void UpdateListboxDisplay(int roomId)
@@ -138,6 +154,7 @@ namespace SoftwareEngineeringProject
 
         private void buttonPlayCard_Click(object sender, EventArgs e)
         {
+            var position = _gameEngine.PlayersList[0].Position;
             // Play the card.
             var success = _gameEngine.PlayersList[0].PlayCard(_indexOfCardDisplayed);
 
@@ -145,43 +162,41 @@ namespace SoftwareEngineeringProject
 
             // Remove the card from the Hand and update the display.
             _gameEngine.PlayersList[0].Hand.RemoveAt(_indexOfCardDisplayed);
-            _indexOfCardDisplayed= _gameEngine.PlayersList[0].Hand.Count - 1;
+            _indexOfCardDisplayed = _gameEngine.PlayersList[0].Hand.Count - 1;
             ChangePictureBoxCardDisplay();
+
+            // Update position if needed.
+            var newPosition = _gameEngine.PlayersList[0].Position;
+            if (newPosition != position) GoToARoom(0, newPosition);
 
             buttonPlayCard.Enabled = false;
             if (buttonMove.Enabled) buttonMove.Enabled = false;
 
-            while (_gameEngine.PlayersList[0].Hand.Count > 7)
-            {
-                _gameEngine.PlayersList[0].DiscardCard();
-            }
+            while (_gameEngine.PlayersList[0].Hand.Count > 7) _gameEngine.PlayersList[0].DiscardCard();
 
-            if(_gameEngine.CurrentYear == 1) _gameEngine.PassToSophomoreYearIfNeeded();
+            if (_gameEngine.CurrentYear == 1) _gameEngine.PassToSophomoreYearIfNeeded();
+            _gameEngine.ApplyQpStep();
+            if (_gameEngine.IsGameOver()) EndGame();
 
             // Each AI plays.
             PlayComputer(_gameEngine.PlayersList[1]);
             PlayComputer(_gameEngine.PlayersList[2]);
 
-            // Update position of all the players.
-            foreach (var player in _gameEngine.PlayersList)
-            {
-                GoToARoom(_gameEngine.PlayersList.IndexOf(player), player.Position);
-            }
-
             // New turn.
             UpdateInformationPanel();
             buttonDrawCard.Enabled = true;
+            _numberOfMoves = 0;
         }
 
         private void UpdateCurrentPlayPanel(int playerIndex, int cardIndexInHand, int success)
         {
             // Display the card played in the Current Play panel.
             var cardPlayed = _gameEngine.PlayersList[playerIndex].Hand.ElementAt(cardIndexInHand);
-            textBoxCurrentPlay.Text += _gameEngine.PlayersList[playerIndex].Name + " played " +
+            textBoxCurrentPlay.Text += _gameEngine.PlayersList[playerIndex].Name + " played \"" +
                                        cardPlayed.Name;
-            if(success == 0) textBoxCurrentPlay.Text += " but in the wrong room" + "\r\n";
-            else if (success == 1) textBoxCurrentPlay.Text += " but failed" + "\r\n";
-            else if (success == 2) textBoxCurrentPlay.Text += " for " + cardPlayed.Reward + "\r\n";            
+            if (success == 0) textBoxCurrentPlay.Text += "\" in the wrong room" + "\r\n";
+            else if (success == 1) textBoxCurrentPlay.Text += "\" but failed" + "\r\n";
+            else if (success == 2) textBoxCurrentPlay.Text += "\" for " + cardPlayed.Reward + "\r\n";
         }
 
         private void pictureBoxCard_Click(object sender, EventArgs e)
@@ -220,6 +235,13 @@ namespace SoftwareEngineeringProject
                 "Cards in deck: " + _gameEngine.Deck.Count + "\tDiscards out of play: " +
                 _gameEngine.DiscardedDeck.Count + "\r\n\r\n" +
                 "You are " + player1.Name + " and you are in " + _gameEngine.RoomNames[player1.Position];
+        }
+
+        private void EndGame()
+        {
+            if (MessageBox.Show(_gameEngine.Winner.Name + " has won!", "Game over", MessageBoxButtons.OK,
+                MessageBoxIcon.Information) == DialogResult.OK)
+                Application.Exit();
         }
     }
 }
