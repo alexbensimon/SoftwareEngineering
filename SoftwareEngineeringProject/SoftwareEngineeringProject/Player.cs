@@ -31,23 +31,20 @@ namespace SoftwareEngineeringProject
         {
             var cardNames = new string[Hand.Count];
             var counter = 0;
-
             foreach (var card in Hand)
             {
                 cardNames[counter] = card.Name;
                 counter++;
             }
             var form = new UserChoiceForm("Choose the card you want to discard", cardNames);
+            form.ShowDialog();
 
-            DialogResult result;
-            do
+            if (form.DialogResult == DialogResult.OK)
             {
-                result = form.ShowDialog();
-            } while (result != DialogResult.OK);
-
-            var cardToRemove = Hand.ElementAt(form.GetCmbBoxSelectedId());
-            Hand.Remove(cardToRemove);
-            _gameEngine.DiscardedDeck.Add(cardToRemove);
+                var cardToRemove = Hand.ElementAt(form.GetCmbBoxSelectedId());
+                Hand.Remove(cardToRemove);
+                _gameEngine.DiscardedDeck.Add(cardToRemove);
+            }
         }
 
         public void LoseCard()
