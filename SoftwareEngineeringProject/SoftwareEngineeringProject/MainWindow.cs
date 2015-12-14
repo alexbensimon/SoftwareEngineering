@@ -128,7 +128,6 @@ namespace SoftwareEngineeringProject
 
         private void buttonDrawCard_Click(object sender, EventArgs e)
         {
-            _gameEngine.PlayersList[0].GetAChipOfHisChoice();
             _gameEngine.PlayersList[0].DrawCard();
 
             _indexOfCardDisplayed = _gameEngine.PlayersList[0].Hand.Count - 1;
