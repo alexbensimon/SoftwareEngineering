@@ -85,8 +85,6 @@ namespace SoftwareEngineeringProject
 
         private void PlayComputer(Player player)
         {
-            var position = player.Position;
-
             // Draw card.
             player.DrawCard();
 
@@ -98,6 +96,8 @@ namespace SoftwareEngineeringProject
                 [new Random().Next(_gameEngine.RoomsAvailable[player.Position].Count)];
                 GoToARoom(_gameEngine.PlayersList.IndexOf(player), randomDestinationId);
             }
+
+            var position = player.Position;
 
             // Play a random card.
             var randomCardIndex = new Random().Next(player.Hand.Count);
@@ -190,11 +190,14 @@ namespace SoftwareEngineeringProject
                     _indexOfCardDisplayed = 0;
                     ChangePictureBoxCardDisplay();
                 }
+                UpdateInformationPanel();
             }
 
             if (_gameEngine.CurrentYear == 1) _gameEngine.PassToSophomoreYearIfNeeded();
             _gameEngine.ApplyQpStep(player);
             if (_gameEngine.IsGameOver()) EndGame();
+
+            UpdateInformationPanel();
 
             // Each AI plays.
             PlayComputer(_gameEngine.PlayersList[1]);
