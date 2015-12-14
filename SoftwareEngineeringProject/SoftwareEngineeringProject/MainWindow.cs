@@ -84,6 +84,10 @@ namespace SoftwareEngineeringProject
         private void PlayComputer(Player player)
         {
             var position = player.Position;
+
+            // Draw card.
+            player.DrawCard();
+
             // Move between 0 and 3 times.
             var numberOfMoves = new Random().Next(4);
             for (int i = 0; i < numberOfMoves; i++)
