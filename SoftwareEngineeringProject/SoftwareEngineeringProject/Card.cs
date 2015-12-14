@@ -166,7 +166,7 @@ namespace SoftwareEngineeringProject
                 {
                     _reward = "2 Learning Chips and 1 discarded card";
                     player.LearningChips++;
-                    player.DiscardCard();
+                    player.DiscardCard(this);
                 }
             }
             else
@@ -181,7 +181,7 @@ namespace SoftwareEngineeringProject
                     case 1:
                         _reward = "2 Learning Chips and 1 discarded card";
                         player.LearningChips++;
-                        player.DiscardCard();
+                        player.DiscardCard(this);
                         break;
                 }
             }
@@ -537,7 +537,7 @@ namespace SoftwareEngineeringProject
                 player.GetAChipOfHisChoice();
                 return true;
             }
-            player.DiscardCard();
+            player.DiscardCard(this);
             return false;
         }
     }
@@ -557,7 +557,7 @@ namespace SoftwareEngineeringProject
                 player.DrawCard();
                 return true;
             }
-            player.DiscardCard();
+            player.DiscardCard(this);
             return false;
         }
     }
@@ -596,7 +596,7 @@ namespace SoftwareEngineeringProject
                 player.GetAChipOfHisChoice();
                 return true;
             }
-            player.DiscardCard();
+            player.DiscardCard(this);
             return false;
         }
     }
@@ -615,7 +615,7 @@ namespace SoftwareEngineeringProject
                 player.GetAChipOfHisChoice();
                 return true;
             }
-            player.DiscardCard();
+            player.DiscardCard(this);
             return false;
         }
     }
@@ -694,7 +694,7 @@ namespace SoftwareEngineeringProject
                 player.GetAChipOfHisChoice();
                 return true;
             }
-            player.DiscardCard();
+            player.DiscardCard(this);
             return false;
         }
     }
@@ -789,7 +789,7 @@ namespace SoftwareEngineeringProject
                 player.GetAChipOfHisChoice();
                 return true;
             }
-            player.DiscardCard();
+            player.DiscardCard(this);
             return false;
         }
     }
@@ -895,7 +895,7 @@ namespace SoftwareEngineeringProject
                 return true;
             }
             player.QualityPoints -= 3;
-            player.DiscardCard();
+            player.DiscardCard(this);
             return false;
         }
     }
@@ -934,7 +934,7 @@ namespace SoftwareEngineeringProject
                 player.GetAChipOfHisChoice();
                 return true;
             }
-            player.DiscardCard();
+            player.DiscardCard(this);
             return false;
         }
     }
@@ -974,7 +974,7 @@ namespace SoftwareEngineeringProject
                 return true;
             }
             player.QualityPoints -= 2;
-            player.DiscardCard();
+            player.DiscardCard(this);
             return false;
         }
     }
@@ -994,7 +994,7 @@ namespace SoftwareEngineeringProject
                 return true;
             }
             player.QualityPoints -= 2;
-            player.DiscardCard();
+            player.DiscardCard(this);
             return false;
         }
     }
@@ -1034,7 +1034,7 @@ namespace SoftwareEngineeringProject
                 return true;
             }
             player.QualityPoints -= 2;
-            player.DiscardCard();
+            player.DiscardCard(this);
             return false;
         }
     }

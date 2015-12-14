@@ -27,24 +27,34 @@ namespace SoftwareEngineeringProject
             _gameEngine = gameEngine;
         }
 
-        public void DiscardCard()
+        public Card DiscardCard(Card parent)
         {
-            var cardNames = new string[Hand.Count];
-            var counter = 0;
-            foreach (var card in Hand)
+            if (Name == "Human Player")
             {
-                cardNames[counter] = card.Name;
-                counter++;
-            }
-            var form = new UserChoiceForm("Choose the card you want to discard", cardNames);
-            form.ShowDialog();
+                Card cardToRemove = null;
+                var cardNames = parent == null ? new string[Hand.Count] : new string[Hand.Count - 1];
+                var counter = 0;
+                foreach (var card in Hand)
+                {
+                    if (!card.Equals(parent))
+                    {
+                        cardNames[counter] = card.Name;
+                        counter++;
+                    }
+                }
+                var form = new UserChoiceForm("Choose the card you want to discard", cardNames);
+                form.ShowDialog();
 
-            if (form.DialogResult == DialogResult.OK)
-            {
-                var cardToRemove = Hand.ElementAt(form.GetCmbBoxSelectedId());
-                Hand.Remove(cardToRemove);
-                _gameEngine.DiscardedDeck.Add(cardToRemove);
+                if (form.DialogResult == DialogResult.OK)
+                {
+                    cardToRemove = Hand.ElementAt(form.GetCmbBoxSelectedId());
+                    Hand.Remove(cardToRemove);
+                    _gameEngine.DiscardedDeck.Add(cardToRemove);
+                }
+                return cardToRemove;
             }
+            LoseCard();
+            return null;
         }
 
         public void LoseCard()
@@ -66,7 +76,7 @@ namespace SoftwareEngineeringProject
             if (Equals(_gameEngine.PlayersList[0]))
             {
                 var form = new UserChoiceForm("Select the chip you want",
-                    new[] {"Learning Chip", "Craft Chip", "Integrity Chip"});
+                    new[] { "Learning Chip", "Craft Chip", "Integrity Chip" });
                 form.ShowDialog();
 
                 if (form.DialogResult == DialogResult.OK)

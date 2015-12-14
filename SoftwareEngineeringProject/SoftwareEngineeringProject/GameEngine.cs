@@ -45,7 +45,7 @@ namespace SoftwareEngineeringProject
             CurrentYear = 1;
             QpLevel = 15;
 
-            var humanPlayer = new Player("Human player", this);
+            var humanPlayer = new Player("Human Player", this);
             var aI1 = new Player("AI 1", this);
             var aI2 = new Player("AI 2", this);
 

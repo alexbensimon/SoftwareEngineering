@@ -102,7 +102,7 @@ namespace SoftwareEngineeringProject
             // Play a random card.
             var randomCardIndex = new Random().Next(player.Hand.Count);
             var success = player.PlayCard(randomCardIndex);
-            UpdateCurrentPlayPanel(_gameEngine.PlayersList.IndexOf(player), randomCardIndex, success);
+            UpdateCurrentPlayPanel(_gameEngine.PlayersList.IndexOf(player), player.Hand.ElementAt(randomCardIndex), success);
 
             // Remove the card from the hand.
             player.Hand.RemoveAt(randomCardIndex);
@@ -164,14 +164,15 @@ namespace SoftwareEngineeringProject
             var player = _gameEngine.PlayersList[0];
             var position = player.Position;
             // Play the card.
+            var cardPlayed =_gameEngine.PlayersList[0].Hand.ElementAt(_indexOfCardDisplayed);
             var success = player.PlayCard(_indexOfCardDisplayed);
 
-            UpdateCurrentPlayPanel(0, _indexOfCardDisplayed, success);
-
             // Remove the card from the Hand and update the display.
-            player.Hand.RemoveAt(_indexOfCardDisplayed);
-            _indexOfCardDisplayed = player.Hand.Count - 1;
+            player.Hand.Remove(cardPlayed);
+            _indexOfCardDisplayed = 0;
             ChangePictureBoxCardDisplay();
+
+            UpdateCurrentPlayPanel(0, cardPlayed, success);
 
             // Update position if needed.
             var newPosition = player.Position;
@@ -180,7 +181,16 @@ namespace SoftwareEngineeringProject
             buttonPlayCard.Enabled = false;
             if (buttonMove.Enabled) buttonMove.Enabled = false;
 
-            while (player.Hand.Count > 7) player.DiscardCard();
+            while (player.Hand.Count > 7)
+            {
+                var cardDiscarded = player.DiscardCard(null);
+                var cardDisplayed = player.Hand.ElementAt(_indexOfCardDisplayed);
+                if (cardDisplayed.Equals(cardDiscarded))
+                {
+                    _indexOfCardDisplayed = 0;
+                    ChangePictureBoxCardDisplay();
+                }
+            }
 
             if (_gameEngine.CurrentYear == 1) _gameEngine.PassToSophomoreYearIfNeeded();
             _gameEngine.ApplyQpStep(player);
@@ -196,10 +206,9 @@ namespace SoftwareEngineeringProject
             _numberOfMoves = 0;
         }
 
-        private void UpdateCurrentPlayPanel(int playerIndex, int cardIndexInHand, int success)
+        private void UpdateCurrentPlayPanel(int playerIndex, Card cardPlayed, int success)
         {
             // Display the card played in the Current Play panel.
-            var cardPlayed = _gameEngine.PlayersList[playerIndex].Hand.ElementAt(cardIndexInHand);
             var previousText = textBoxCurrentPlay.Text;
             textBoxCurrentPlay.Text = _gameEngine.PlayersList[playerIndex].Name + " played \"" +
                                        cardPlayed.Name;
@@ -235,16 +244,21 @@ namespace SoftwareEngineeringProject
             var player3 = playersList[2];
             textBoxInformationPanel.Text =
                 "\t\tLearning\t\tCraft\t\tIntegrity\t\tQualityPoints\r\n" +
-                player1.Name + "\t" + player1.LearningChips + "\t\t" + player1.CraftChips + "\t\t" + player1.IntegrityChips +
+                player1.Name + "\t" + player1.LearningChips + "\t\t" + player1.CraftChips + "\t\t" +
+                player1.IntegrityChips +
                 "\t\t" + player1.QualityPoints + "\r\n" +
-                player2.Name + "\t\t" + player2.LearningChips + "\t\t" + player2.CraftChips + "\t\t" + player2.IntegrityChips +
+                player2.Name + "\t\t" + player2.LearningChips + "\t\t" + player2.CraftChips + "\t\t" +
+                player2.IntegrityChips +
                 "\t\t" + player2.QualityPoints + "\r\n" +
-                player3.Name + "\t\t" + player3.LearningChips + "\t\t" + player3.CraftChips + "\t\t" + player3.IntegrityChips +
+                player3.Name + "\t\t" + player3.LearningChips + "\t\t" + player3.CraftChips + "\t\t" +
+                player3.IntegrityChips +
                 "\t\t" + player3.QualityPoints + "\r\n" +
                 "\r\n\r\n" +
                 "Cards in deck: " + _gameEngine.Deck.Count + "\tDiscards out of play: " +
                 _gameEngine.DiscardedDeck.Count + "\r\n\r\n" +
-                "You are " + player1.Name + " and you are in " + _gameEngine.RoomNames[player1.Position];
+                "You are " + player1.Name + " and you are in " + _gameEngine.RoomNames[player1.Position] + "\r\n" +
+                player2.Name + " is in " + _gameEngine.RoomNames[player2.Position] + "\r\n" +
+                player3.Name + " is in " + _gameEngine.RoomNames[player3.Position];
         }
 
         private void EndGame()
