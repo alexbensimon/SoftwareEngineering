@@ -726,7 +726,7 @@ namespace SoftwareEngineeringProject
         public override string Name => "CHEM 111";
         public override string Reward => "5 Quality Points";
         public override int Year => 1;
-        public override int[] CorrectRooms => new[] { 2, 3, 4, 5, 7, 8, 9 };
+        public override int[] CorrectRooms => new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
         public override bool Play(Player player)
         {

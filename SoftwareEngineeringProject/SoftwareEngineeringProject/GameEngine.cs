@@ -11,6 +11,7 @@ namespace SoftwareEngineeringProject
         public List<Card> DiscardedDeck { get; set; }
         public int CurrentYear { get; set; }
         public Player Winner { get; set; }
+        public int QpLevel { get; set; }
 
         public List<string> RoomNames { get; set; } = new List<string>
         {
@@ -22,8 +23,8 @@ namespace SoftwareEngineeringProject
 
         public List<List<int>> RoomsAvailable { get; set; } = new List<List<int>>
         {
-            new List<int> {1, 3}, new List<int> {0, 2, 3}, new List<int> {1, 3, 5, 6},
-            new List<int> {0, 1, 2, 5}, new List<int> {5, 7, 12}, new List<int> {2, 3, 4, 6},
+            new List<int> {1, 3, 4, 5}, new List<int> {0, 2, 3}, new List<int> {1, 3, 5, 6},
+            new List<int> {0, 1, 2, 5}, new List<int> {0, 5, 7, 12}, new List<int> {0, 2, 3, 4, 6},
             new List<int> {2, 5, 10}, new List<int> {4, 8}, new List<int> {7, 9, 16}, new List<int> {8, 10},
             new List<int> {6, 9, 15}, new List<int> {12}, new List<int> {4, 11, 13, 14, 15, 16},
             new List<int> {12}, new List<int> {12, 15}, new List<int> {10, 12, 14, 17, 18, 19, 20},
@@ -42,6 +43,7 @@ namespace SoftwareEngineeringProject
             Deck = new List<Card>();
             DiscardedDeck = new List<Card>();
             CurrentYear = 1;
+            QpLevel = 15;
 
             var humanPlayer = new Player("Human player", this);
             var aI1 = new Player("AI 1", this);
@@ -180,32 +182,26 @@ namespace SoftwareEngineeringProject
             }
         }
 
-        public void ApplyQpStep()
+        public void ApplyQpStep(Player player)
         {
-            int totalQp = 0;
-            foreach (var player in PlayersList)
+            if (player.QualityPoints < 0) player.QualityPoints = 0;
+            else if (player.QualityPoints >= QpLevel)
             {
-                totalQp += player.QualityPoints;
-            }
-
-            if (totalQp > 0 && totalQp % 15 == 0)
-            {
-                PlayersList[0].GetAChipOfHisChoice();
-                for (int i = 1; i < 3; i++)
-                {
-                    PlayersList[i].GetAChipOfHisChoice();
-                }
+                player.GetAChipOfHisChoice();
+                QpLevel += 15;
             }
         }
 
         public bool IsGameOver()
         {
             foreach (var player in PlayersList)
+            {
                 if (player.QualityPoints >= 100)
                 {
                     Winner = player;
                     return true;
                 }
+            }                
             return false;
         }
     }
