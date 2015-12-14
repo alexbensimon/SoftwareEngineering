@@ -41,6 +41,7 @@
             this.buttonDrawCard = new System.Windows.Forms.Button();
             this.buttonMove = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -65,6 +66,7 @@
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.labelPlayer3);
             this.splitContainer1.Panel1.Controls.Add(this.labelPlayer2);
             this.splitContainer1.Panel1.Controls.Add(this.labelPlayer1);
@@ -234,6 +236,17 @@
             this.listBox1.Size = new System.Drawing.Size(103, 30);
             this.listBox1.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(298, 1369);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 33);
+            this.label1.TabIndex = 4;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,5 +290,6 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.TextBox textBoxCurrentPlay;
         private System.Windows.Forms.TextBox textBoxInformationPanel;
+        private System.Windows.Forms.Label label1;
     }
 }
