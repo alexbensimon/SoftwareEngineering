@@ -52,8 +52,7 @@ namespace SoftwareEngineeringProject
 
         public void LoseCard()
         {
-            var rnd = new Random();
-            var card = Hand.ElementAt(rnd.Next());
+            var card = Hand.ElementAt(new Random().Next(Hand.Count));
             Hand.Remove(card);
             _gameEngine.DiscardedDeck.Add(card);
         }
@@ -67,20 +66,41 @@ namespace SoftwareEngineeringProject
 
         public void GetAChipOfHisChoice()
         {
-            var form = new UserChoiceForm("Select the chip you want", new[] { "Learning Chip", "Craft Chip", "Integrity Chip" });
-            form.ShowDialog();
-
-            if (form.DialogResult == DialogResult.OK)
+            if (Equals(_gameEngine.PlayersList[0]))
             {
-                switch (form.GetCmbBoxSelectedContent())
+                var form = new UserChoiceForm("Select the chip you want",
+                    new[] {"Learning Chip", "Craft Chip", "Integrity Chip"});
+                form.ShowDialog();
+
+                if (form.DialogResult == DialogResult.OK)
                 {
-                    case "Learning Chip":
+                    switch (form.GetCmbBoxSelectedContent())
+                    {
+                        case "Learning Chip":
+                            LearningChips++;
+                            break;
+                        case "Craft Chip":
+                            CraftChips++;
+                            break;
+                        case "Integrity Chip":
+                            IntegrityChips++;
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                // If the player is AI, do it randomly.
+                var bonus = new Random().Next(3);
+                switch (bonus)
+                {
+                    case 0:
                         LearningChips++;
                         break;
-                    case "Craft Chip":
+                    case 1:
                         CraftChips++;
                         break;
-                    case "Integrity Chip":
+                    case 2:
                         IntegrityChips++;
                         break;
                 }

@@ -193,20 +193,7 @@ namespace SoftwareEngineeringProject
                 PlayersList[0].GetAChipOfHisChoice();
                 for (int i = 1; i < 3; i++)
                 {
-                    var player = PlayersList[i];
-                    var bonus = new Random().Next(3);
-                    switch (bonus)
-                    {
-                        case 0:
-                            player.LearningChips++;
-                            break;
-                        case 1:
-                            player.CraftChips++;
-                            break;
-                        case 2:
-                            player.IntegrityChips++;
-                            break;
-                    }
+                    PlayersList[i].GetAChipOfHisChoice();
                 }
             }
         }

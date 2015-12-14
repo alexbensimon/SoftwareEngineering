@@ -774,7 +774,7 @@ namespace SoftwareEngineeringProject
     {
         public override string Name => "Car Pool";
         public override string Reward => "3 Quality Points and 1 Game Card";
-        public override int Year => 1;
+        public override int Year => 2;
         public override int[] CorrectRooms => new[] { 2, 6 };
 
         public override bool Play(Player player)

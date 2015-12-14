@@ -196,11 +196,13 @@ namespace SoftwareEngineeringProject
         {
             // Display the card played in the Current Play panel.
             var cardPlayed = _gameEngine.PlayersList[playerIndex].Hand.ElementAt(cardIndexInHand);
-            textBoxCurrentPlay.Text += _gameEngine.PlayersList[playerIndex].Name + " played \"" +
+            var previousText = textBoxCurrentPlay.Text;
+            textBoxCurrentPlay.Text = _gameEngine.PlayersList[playerIndex].Name + " played \"" +
                                        cardPlayed.Name;
             if (success == 0) textBoxCurrentPlay.Text += "\" in the wrong room" + "\r\n";
             else if (success == 1) textBoxCurrentPlay.Text += "\" but failed" + "\r\n";
             else if (success == 2) textBoxCurrentPlay.Text += "\" for " + cardPlayed.Reward + "\r\n";
+            textBoxCurrentPlay.Text += previousText;
         }
 
         private void pictureBoxCard_Click(object sender, EventArgs e)
