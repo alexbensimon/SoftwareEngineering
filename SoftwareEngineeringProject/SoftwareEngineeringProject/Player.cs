@@ -47,7 +47,11 @@ namespace SoftwareEngineeringProject
 
                 if (form.DialogResult == DialogResult.OK)
                 {
-                    cardToRemove = Hand.ElementAt(form.GetCmbBoxSelectedId());
+                    foreach (var card in Hand)
+                    {
+                        if (card.Name == form.GetCmbBoxSelectedContent())
+                            cardToRemove = card;
+                    }
                     Hand.Remove(cardToRemove);
                     _gameEngine.DiscardedDeck.Add(cardToRemove);
                 }
