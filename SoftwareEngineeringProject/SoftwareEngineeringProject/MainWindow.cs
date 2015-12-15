@@ -105,11 +105,13 @@ namespace SoftwareEngineeringProject
 
             // Play a random card.
             var randomCardIndex = new Random().Next(player.Hand.Count);
+            var cardPlayed = player.Hand.ElementAt(randomCardIndex);
             var success = player.PlayCard(randomCardIndex);
-            UpdateCurrentPlayPanel(_gameEngine.PlayersList.IndexOf(player), player.Hand.ElementAt(randomCardIndex), success);
 
             // Remove the card from the hand.
-            player.Hand.RemoveAt(randomCardIndex);
+            player.Hand.Remove(cardPlayed);
+
+            UpdateCurrentPlayPanel(_gameEngine.PlayersList.IndexOf(player), cardPlayed, success);
 
             var newPosition = player.Position;
             if (newPosition != position) GoToARoom(_gameEngine.PlayersList.IndexOf(player), newPosition);
