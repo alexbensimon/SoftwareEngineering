@@ -136,7 +136,7 @@ namespace SoftwareEngineeringProject
             }
         }
 
-        public void PassToSophomoreYearIfNeeded()
+        public bool PassToSophomoreYearIfNeeded()
         {
             int totalQp = 0;
             foreach (var player in PlayersList)
@@ -180,7 +180,10 @@ namespace SoftwareEngineeringProject
                 ShuffleDeck();
 
                 AssignRandomHands();
+
+                return true;
             }
+            return false;
         }
 
         public void ApplyQpStep(Player player)

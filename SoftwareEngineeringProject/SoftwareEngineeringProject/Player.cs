@@ -53,13 +53,17 @@ namespace SoftwareEngineeringProject
                 }
                 return cardToRemove;
             }
-            LoseCard();
+            LoseCard(parent);
             return null;
         }
 
-        public void LoseCard()
+        public void LoseCard(Card parent)
         {
-            var card = Hand.ElementAt(new Random().Next(Hand.Count));
+            Card card;
+            do
+            {
+                card = Hand.ElementAt(new Random().Next(Hand.Count));
+            } while (card.Equals(parent));            
             Hand.Remove(card);
             _gameEngine.DiscardedDeck.Add(card);
         }

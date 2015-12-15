@@ -181,6 +181,8 @@ namespace SoftwareEngineeringProject
             buttonPlayCard.Enabled = false;
             if (buttonMove.Enabled) buttonMove.Enabled = false;
 
+            UpdateInformationPanel();
+
             while (player.Hand.Count > 7)
             {
                 var cardDiscarded = player.DiscardCard(null);
@@ -193,7 +195,12 @@ namespace SoftwareEngineeringProject
                 UpdateInformationPanel();
             }
 
-            if (_gameEngine.CurrentYear == 1) _gameEngine.PassToSophomoreYearIfNeeded();
+            if (_gameEngine.CurrentYear == 1)
+                if (_gameEngine.PassToSophomoreYearIfNeeded())
+                {
+                    _indexOfCardDisplayed = 0;
+                    ChangePictureBoxCardDisplay();
+                }
             _gameEngine.ApplyQpStep(player);
             if (_gameEngine.IsGameOver()) EndGame();
 
