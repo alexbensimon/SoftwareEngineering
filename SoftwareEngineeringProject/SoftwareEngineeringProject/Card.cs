@@ -217,7 +217,7 @@ namespace SoftwareEngineeringProject
                 player.QualityPoints += 10;
                 return true;
             }
-            player.LoseCard();
+            player.LoseCard(this);
             return false;
         }
     }
@@ -401,7 +401,7 @@ namespace SoftwareEngineeringProject
                 return true;
             }
             player.QualityPoints -= 3;
-            player.LoseCard();
+            player.LoseCard(this);
             return false;
         }
     }

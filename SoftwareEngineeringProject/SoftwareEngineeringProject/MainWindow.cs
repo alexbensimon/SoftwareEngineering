@@ -114,7 +114,7 @@ namespace SoftwareEngineeringProject
             var newPosition = player.Position;
             if (newPosition != position) GoToARoom(_gameEngine.PlayersList.IndexOf(player), newPosition);
 
-            while (player.Hand.Count > 7) player.LoseCard();
+            while (player.Hand.Count > 7) player.LoseCard(null);
 
             if (_gameEngine.CurrentYear == 1) _gameEngine.PassToSophomoreYearIfNeeded();
             _gameEngine.ApplyQpStep(player);
