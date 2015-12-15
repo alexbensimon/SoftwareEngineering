@@ -53,6 +53,10 @@ namespace SoftwareEngineeringProject
             {
                 Close();
             }
+            else if (e.KeyCode == Keys.L)
+            {
+                _gameEngine.PlayersList[0].QualityPoints=99;
+            }
         }
 
         private void GoToARoom(int playerId, int roomId)
